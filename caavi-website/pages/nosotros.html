@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros - The Office Generation by CAAVI®</title>
+
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+    <link href="../styles/tailwind.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <style>
+        :root {
+            --color-dark: #070707;
+            --color-grey: #727272;
+            --color-light: #efeaea;
+            --color-orange: #ff6700;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+        }
+
+        .navbar {
+            background-color: var(--color-dark);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .navbar-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .navbar-logo-svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .navbar-brand {
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .navbar-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .navbar-menu a:hover {
+            color: var(--color-orange);
+        }
+
+        .navbar-menu a.active {
+            color: var(--color-orange);
+            border-bottom: 2px solid var(--color-orange);
+            padding-bottom: 0.25rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-menu {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Hero Section */
+        .hero-nosotros {
+            background-color: var(--color-dark);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: rgba(255, 103, 0, 0.2);
+            color: var(--color-orange);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--color-orange);
+        }
+
+        .hero-nosotros h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-nosotros .accent {
+            color: var(--color-orange);
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .hero-nosotros h1 {
+                font-size: 2rem;
+            }
+            .hero-nosotros {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        /* Cards Section */
+        .card-mision {
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card-mision:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--color-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+        }
+
+        .card-icon svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .card-mision h3 {
+            font-size: 1.5rem;
+            color: var(--color-dark);
+            margin-bottom: 1rem;
+        }
+
+        .card-mision p, .card-mision ul {
+            color: var(--color-grey);
+            line-height: 1.6;
+        }
+
+        .card-mision ul {
+            text-align: left;
+            list-style: none;
+            padding: 0;
+        }
+
+        .card-mision li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .card-mision li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--color-orange);
+            font-weight: bold;
+        }
+
+        /* Timeline */
+        .timeline-section {
+            background-color: #ffffff;
+            padding: 5rem 2rem;
+        }
+
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            align-items: flex-start;
+        }
+
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 35px;
+            top: 80px;
+            width: 2px;
+            height: 60px;
+            background-color: var(--color-orange);
+        }
+
+        .timeline-dot {
+            width: 70px;
+            height: 70px;
+            background-color: var(--color-dark);
+            border: 3px solid var(--color-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding-top: 0.5rem;
+        }
+
+        .timeline-year {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-orange);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .timeline-text {
+            color: var(--color-grey);
+            margin-top: 0.5rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-item {
+                gap: 1rem;
+            }
+            .timeline-dot {
+                width: 50px;
+                height: 50px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Team Section */
+        .team-section {
+            background-color: var(--color-light);
+            padding: 5rem 2rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .team-avatar.orange {
+            background: linear-gradient(135deg, var(--color-orange), #ff8533);
+        }
+
+        .team-avatar.grey {
+            background: linear-gradient(135deg, var(--color-grey), #8a8a8a);
+        }
+
+        .team-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            color: var(--color-orange);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .team-description {
+            color: var(--color-grey);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background-color: var(--color-dark);
+            color: white;
+            padding: 5rem 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background-color: rgba(255, 103, 0, 0.1);
+            border: 1px solid rgba(255, 103, 0, 0.2);
+            border-radius: 12px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-orange);
+            font-family: 'Outfit', sans-serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        /* Certifications Section */
+        .certifications-section {
+            background-color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .certifications-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .certifications-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .cert-badge {
+            background-color: var(--color-light);
+            border: 2px solid var(--color-orange);
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            color: var(--color-dark);
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+
+        .cert-badge:hover {
+            background-color: var(--color-orange);
+            color: white;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: var(--color-dark);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--color-orange);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            background-color: #e55a00;
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h4 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--color-orange);
+        }
+
+        .footer-column p, .footer-column a {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--color-orange);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+            text-align: center;
+            color: #808080;
+            font-size: 0.85rem;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--color-dark);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            color: var(--color-grey);
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-light-bg {
+            background-color: var(--color-light);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        [data-delay="1"] { animation-delay: 0.1s; }
+        [data-delay="2"] { animation-delay: 0.2s; }
+        [data-delay="3"] { animation-delay: 0.3s; }
+        [data-delay="4"] { animation-delay: 0.4s; }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-nosotros h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="../index.html" class="navbar-logo">
+                <img src="https://i.imgur.com/SsuOn1V.png" alt="TOG isotipo" style="height:36px;width:auto;object-fit:contain;" />
+            </a>
+            <ul class="navbar-menu">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="./nosotros.html" class="active">Nosotros</a></li>
+                <li><a href="./productos.html">Productos</a></li>
+                <li><a href="./contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero-nosotros">
+        <div class="fade-in-up">
+            <div class="badge">Nuestra Historia</div>
+            <h1>La <span class="accent">generación</span> que transformó la oficina mexicana</h1>
+            <p class="hero-subtitle">
+                The Office Generation by CAAVI® es más que una marca. Somos el socio estratégico que impulsa la productividad
+                de empresas mexicanas a través de espacios de trabajo bien equipados, innovadores y pensados para el éxito.
+            </p>
+        </div>
+    </section>
+
+    <!-- MISIÓN / VISIÓN / VALORES -->
+    <section class="section-light-bg" style="padding: 5rem 2rem;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">Nuestra Filosofía</h2>
+            <p class="section-subtitle">Los pilares que guían cada decisión en The Office Generation</p>
+
+            <div class="team-grid">
+                <!-- Misión -->
+                <div class="card-mision fade-in-up" data-delay="1">
+                    <div class="card-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
+                        </svg>
+                    </div>
+                    <h3>Misión</h3>
+                    <p>Ser el socio estratégico que impulsa la productividad de cada empresa a través de espacios de trabajo bien equipados.</p>
+                </div>
+
+                <!-- Visión -->
+                <div class="card-mision fade-in-up" data-delay="2">
+                    <div class="card-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                    <h3>Visión</h3>
+                    <p>Convertirnos en la comercializadora B2B de referencia nacional para equipamiento de oficinas.</p>
+                </div>
+
+                <!-- Valores -->
+                <div class="card-mision fade-in-up" data-delay="3">
+                    <div class="card-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
+                        </svg>
+                    </div>
+                    <h3>Valores</h3>
+                    <ul>
+                        <li>Confianza</li>
+                        <li>Innovación</li>
+                        <li>Puntualidad</li>
+                        <li>Servicio</li>
+                        <li>Transparencia</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HISTORIA / TIMELINE -->
+    <section class="timeline-section">
+        <div class="timeline-container">
+            <h2 class="section-title">Nuestro Recorrido</h2>
+            <p class="section-subtitle">8 años transformando la industria de equipamiento de oficinas en México</p>
+
+            <div style="margin-top: 3rem;">
+                <!-- 2016 -->
+                <div class="timeline-item fade-in-up" data-delay="1">
+                    <div class="timeline-dot">2016</div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">Fundación de CAAVI Comercializadora</div>
+                        <div class="timeline-text">Nace en la CDMX la visión de revolucionar el mercado B2B de muebles y artículos de oficina con un enfoque en calidad y servicio.</div>
+                    </div>
+                </div>
+
+                <!-- 2018 -->
+                <div class="timeline-item fade-in-up" data-delay="2">
+                    <div class="timeline-dot">2018</div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">Lanzamiento de línea premium</div>
+                        <div class="timeline-text">Presentamos nuestra primera línea de muebles de oficina diseñados para empresas modernas, con enfoque en ergonomía e innovación.</div>
+                    </div>
+                </div>
+
+                <!-- 2020 -->
+                <div class="timeline-item fade-in-up" data-delay="3">
+                    <div class="timeline-dot">2020</div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">Expansión Nacional</div>
+                        <div class="timeline-text">Llegamos a 5 ciudades principales: CDMX, Guadalajara, Monterrey, Puebla y Querétaro, consolidando nuestra presencia en el país.</div>
+                    </div>
+                </div>
+
+                <!-- 2022 -->
+                <div class="timeline-item fade-in-up" data-delay="4">
+                    <div class="timeline-dot">2022</div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">The Office Generation nace como marca</div>
+                        <div class="timeline-text">Transformamos la identidad de CAAVI y creamos The Office Generation, la marca premium B2B que representa excelencia y transformación.</div>
+                    </div>
+                </div>
+
+                <!-- 2024 -->
+                <div class="timeline-item fade-in-up" data-delay="5">
+                    <div class="timeline-dot">2024</div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">Hito de Crecimiento</div>
+                        <div class="timeline-text">Alcanzamos +120 clientes empresariales, $500M MXN en proyectos gestionados y 98% de satisfacción en nuestros servicios.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM SECTION -->
+    <section class="team-section">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">Nuestro Equipo</h2>
+            <p class="section-subtitle">Las personas que hacen posible la transformación</p>
+
+            <div class="team-grid">
+                <!-- Member 1 -->
+                <div class="team-card fade-in-up" data-delay="1">
+                    <div class="team-avatar orange">MC</div>
+                    <div class="team-name">Marco Cortés</div>
+                    <div class="team-role">Director General</div>
+                    <div class="team-description">Líder visionario con 12+ años en la industria de equipamiento corporativo. Impulsa la estrategia y crecimiento de TOG.</div>
+                </div>
+
+                <!-- Member 2 -->
+                <div class="team-card fade-in-up" data-delay="2">
+                    <div class="team-avatar grey">AL</div>
+                    <div class="team-name">Ana López</div>
+                    <div class="team-role">Directora Comercial</div>
+                    <div class="team-description">Experta en relaciones B2B y negociación estratégica. Construye alianzas que transforman empresas en toda la nación.</div>
+                </div>
+
+                <!-- Member 3 -->
+                <div class="team-card fade-in-up" data-delay="3">
+                    <div class="team-avatar orange">DP</div>
+                    <div class="team-name">David Pérez</div>
+                    <div class="team-role">Responsable de Operaciones</div>
+                    <div class="team-description">Optimiza cada proceso para garantizar puntualidad y calidad. Asegura que cada proyecto cumpla nuestros estándares.</div>
+                </div>
+
+                <!-- Member 4 -->
+                <div class="team-card fade-in-up" data-delay="4">
+                    <div class="team-avatar grey">SG</div>
+                    <div class="team-name">Sofía García</div>
+                    <div class="team-role">Diseñadora de Espacios</div>
+                    <div class="team-description">Crea soluciones de oficina innovadoras y ergonómicas. Transforma espacios en ambientes productivos y modernos.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="stats-section">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 3rem; text-align: center;">Números que nos Definen</h2>
+
+            <div class="stats-grid">
+                <div class="stat-card fade-in-up" data-delay="1">
+                    <div class="stat-number">+120</div>
+                    <div class="stat-label">Clientes Empresariales</div>
+                </div>
+
+                <div class="stat-card fade-in-up" data-delay="2">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Satisfacción de Clientes</div>
+                </div>
+
+                <div class="stat-card fade-in-up" data-delay="3">
+                    <div class="stat-number">8+</div>
+                    <div class="stat-label">Años de Experiencia</div>
+                </div>
+
+                <div class="stat-card fade-in-up" data-delay="4">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Ciudades Principales</div>
+                </div>
+
+                <div class="stat-card fade-in-up" data-delay="5">
+                    <div class="stat-number">500M+</div>
+                    <div class="stat-label">MXN en Proyectos</div>
+                </div>
+
+                <div class="stat-card fade-in-up" data-delay="6">
+                    <div class="stat-number">24h</div>
+                    <div class="stat-label">Respuesta Garantizada</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS SECTION -->
+    <section class="certifications-section">
+        <div class="certifications-container">
+            <h2 class="section-title">Certificaciones y Acreditaciones</h2>
+            <p class="section-subtitle">Respaldados por las máximas autoridades en nuestro sector</p>
+
+            <div class="certifications-grid">
+                <div class="cert-badge fade-in-up" data-delay="1">ISO 9001</div>
+                <div class="cert-badge fade-in-up" data-delay="2">SAT Activo</div>
+                <div class="cert-badge fade-in-up" data-delay="3">IMMEX</div>
+                <div class="cert-badge fade-in-up" data-delay="4">CANACINTRA</div>
+                <div class="cert-badge fade-in-up" data-delay="5">CONCAMIN</div>
+                <div class="cert-badge fade-in-up" data-delay="6">AMVO</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 class="cta-title fade-in-up">Únete a la generación de oficinas que sí funcionan</h2>
+            <button class="cta-button fade-in-up" data-delay="1" onclick="window.location.href='./contacto.html'">Contáctanos Ahora</button>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Sobre The Office Generation</h4>
+                <p>Transformamos espacios de trabajo en ambientes de productividad y innovación para empresas mexicanas.</p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Enlaces Rápidos</h4>
+                <a href="../index.html">Inicio</a>
+                <a href="./nosotros.html">Nosotros</a>
+                <a href="./productos.html">Productos</a>
+                <a href="./contacto.html">Contacto</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contacto</h4>
+                <p>Email: info@caavi.mx</p>
+                <p>Teléfono: +52 (55) 1234-5678</p>
+                <p>CDMX, México</p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Síguenos</h4>
+                <a href="#">LinkedIn</a>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 The Office Generation by CAAVI®. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Navbar Active Link
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname;
+            const navLinks = document.querySelectorAll('.navbar-menu a');
+
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === './nosotros.html' ||
+                    link.getAttribute('href').includes('nosotros')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+
+        // Scroll Reveal Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.card-mision, .team-card, .stat-card, .cert-badge, .timeline-item').forEach(el => {
+            if (!el.classList.contains('fade-in-up')) {
+                el.classList.remove('fade-in-up');
+                observer.observe(el);
+            }
+        });
+
+        // Lucide Icons Initialize
+        lucide.createIcons();
+    </script>
+</body>
+</html>

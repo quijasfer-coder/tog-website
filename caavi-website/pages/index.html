@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The Office Generation by CAAVI® — La nueva generación de soluciones para tu oficina. Muebles, equipos y consumibles B2B." />
+  <title>The Office Generation by CAAVI®</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <style>
+    /* =============================================
+       DESIGN TOKENS — TOG Brand
+       Style: EGO ThinkTech (dark, bold, minimal)
+    ============================================= */
+    :root {
+      --black:         #070707;
+      --black-2:       #0d0d0d;
+      --black-3:       #111111;
+      --black-4:       #161616;
+      --gray:          #727272;
+      --gray-lt:       #9a9a9a;
+      --light:         #efeaea;
+      --orange:        #ff6700;
+      --orange-dk:     #e05a00;
+      --orange-glow:   rgba(255,103,0,0.15);
+      --white:         #ffffff;
+      --border:        rgba(255,255,255,0.07);
+      --border-orange: rgba(255,103,0,0.22);
+
+      --font-h: 'Outfit', sans-serif;
+      --font-b: 'Inter', sans-serif;
+
+      --nav-h:   68px;
+      --pill:    100px;
+      --r-md:    12px;
+      --r-lg:    20px;
+      --r-xl:    28px;
+
+      --t:       all 0.22s ease;
+      --t-slow:  all 0.4s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-b);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
+
+    /* =============================================
+       NAVBAR
+    ============================================= */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      display: flex; align-items: center;
+      transition: background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease;
+    }
+
+    .nav.scrolled {
+      background: rgba(7,7,7,0.94);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex; align-items: center;
+      justify-content: space-between; width: 100%;
+    }
+
+    /* Logo navbar — isotipo casi cuadrado (1045:1099) */
+    .nav-logo img {
+      height: 36px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
+
+    .nav-links a {
+      font-family: var(--font-h);
+      font-size: 14px; font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      padding: 8px 15px;
+      border-radius: var(--pill);
+      transition: var(--t);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--white); }
+
+    .nav-cta {
+      font-family: var(--font-h);
+      font-size: 13.5px; font-weight: 700;
+      color: var(--white);
+      padding: 9px 22px;
+      border-radius: var(--pill);
+      border: 1.5px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.04);
+      transition: var(--t);
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover {
+      background: var(--orange);
+      border-color: var(--orange);
+    }
+
+    .nav-toggle {
+      display: none; flex-direction: column; gap: 5px;
+      padding: 6px; background: none; border: none;
+    }
+
+    .nav-toggle span {
+      display: block; width: 22px; height: 1.5px;
+      background: rgba(255,255,255,0.75);
+      border-radius: 2px; transition: var(--t);
+    }
+
+    .nav-mobile {
+      display: none;
+      position: fixed; top: var(--nav-h); left: 0; right: 0;
+      background: rgba(7,7,7,0.97);
+      backdrop-filter: blur(24px);
+      padding: 18px 28px 28px;
+      flex-direction: column; gap: 3px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile a {
+      font-family: var(--font-h);
+      font-size: 17px; font-weight: 600;
+      color: rgba(255,255,255,0.65);
+      padding: 12px 16px;
+      border-radius: var(--r-md);
+      transition: var(--t);
+    }
+
+    .nav-mobile a:hover { color: var(--orange); }
+
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .nav-cta { display: none; }
+    }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: calc(var(--nav-h) + 64px) 28px 96px;
+      position: relative; overflow: hidden;
+    }
+
+    /* Glows */
+    .hero-glow {
+      position: absolute; border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-glow-1 {
+      width: 680px; height: 680px;
+      background: radial-gradient(circle, rgba(255,103,0,0.12) 0%, transparent 70%);
+      top: -80px; left: -160px;
+      animation: gpulse 9s ease-in-out infinite;
+    }
+
+    .hero-glow-2 {
+      width: 560px; height: 560px;
+      background: radial-gradient(circle, rgba(255,103,0,0.08) 0%, transparent 65%);
+      bottom: -60px; right: -80px;
+      animation: gpulse 11s ease-in-out infinite 3s;
+    }
+
+    .hero-glow-c {
+      width: 860px; height: 380px;
+      background: radial-gradient(ellipse, rgba(255,103,0,0.055) 0%, transparent 60%);
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+    }
+
+    @keyframes gpulse {
+      0%,100% { opacity:1; transform: scale(1); }
+      50%      { opacity:0.55; transform: scale(1.12); }
+    }
+
+    /* Grid texture */
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 20%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 20%, transparent 100%);
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 980px; }
+
+    /* Pill badge */
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 9px;
+      font-family: var(--font-h);
+      font-size: 11.5px; font-weight: 600;
+      letter-spacing: 0.13em; text-transform: uppercase;
+      color: rgba(255,255,255,0.68);
+      padding: 8px 20px;
+      border-radius: var(--pill);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.035);
+      backdrop-filter: blur(10px);
+      margin-bottom: 40px;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .bdot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--orange);
+      animation: bdot-pulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes bdot-pulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(255,103,0,0.65); }
+      50%      { box-shadow: 0 0 0 5px rgba(255,103,0,0); }
+    }
+
+    /* Hero logo — proporción exacta 6602:2880 */
+    .hero-logo-wrap {
+      /* Ancho máximo responsivo; alto calculado por aspect-ratio */
+      width: min(580px, 90vw);
+      aspect-ratio: 6602 / 2880;   /* ratio exacto del archivo */
+      margin: 0 auto 48px;
+      animation: fadeUp 0.8s ease 0.1s both;
+    }
+
+    .hero-logo-wrap img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+    }
+
+    /* Fallback si falla la imagen */
+    .hero-logo-fallback {
+      display: none;
+      font-family: var(--font-h);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+    }
+
+    .hero-headline {
+      font-family: var(--font-h);
+      font-size: clamp(40px, 6.2vw, 78px);
+      font-weight: 900;
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      color: var(--white);
+      margin-bottom: 24px;
+      animation: fadeUp 0.8s ease 0.2s both;
+    }
+
+    .hero-headline .acc { color: var(--orange); }
+
+    .hero-sub {
+      font-size: 17px; line-height: 1.72;
+      color: rgba(255,255,255,0.48);
+      max-width: 520px; margin: 0 auto 48px;
+      animation: fadeUp 0.8s ease 0.3s both;
+    }
+
+    /* CTAs */
+    .hero-ctas {
+      display: flex; gap: 13px;
+      justify-content: center; flex-wrap: wrap;
+      animation: fadeUp 0.8s ease 0.4s both;
+    }
+
+    .btn-f {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-h); font-size: 15px; font-weight: 700;
+      padding: 14px 36px; border-radius: var(--pill);
+      border: 1.5px solid var(--orange);
+      background: var(--orange); color: var(--black);
+      transition: var(--t); cursor: pointer;
+    }
+
+    .btn-f:hover {
+      background: var(--orange-dk); border-color: var(--orange-dk);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(255,103,0,0.38);
+    }
+
+    .btn-o {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-h); font-size: 15px; font-weight: 700;
+      padding: 14px 36px; border-radius: var(--pill);
+      border: 1.5px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(8px);
+      color: var(--white); transition: var(--t); cursor: pointer;
+    }
+
+    .btn-o:hover { border-color: var(--orange); color: var(--orange); }
+
+    /* Social proof */
+    .hero-proof {
+      display: flex; align-items: center; justify-content: center;
+      gap: 22px; flex-wrap: wrap;
+      margin-top: 60px;
+      animation: fadeUp 0.8s ease 0.55s both;
+    }
+
+    .proof-item {
+      display: flex; align-items: center; gap: 9px;
+      font-size: 13px; color: rgba(255,255,255,0.4);
+    }
+
+    .proof-item strong {
+      font-family: var(--font-h); font-size: 19px;
+      font-weight: 900; color: var(--white);
+    }
+
+    .proof-sep { width: 1px; height: 26px; background: var(--border); }
+
+    /* =============================================
+       MARQUEE
+    ============================================= */
+    .marquee-wrap {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--black-2);
+      padding: 20px 0; overflow: hidden;
+    }
+
+    .marquee-track {
+      display: flex; width: max-content;
+      animation: marquee 26s linear infinite;
+    }
+
+    .marquee-track:hover { animation-play-state: paused; }
+
+    .m-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 0 38px;
+      font-family: var(--font-h);
+      font-size: 13px; font-weight: 600;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      color: rgba(255,255,255,0.38); white-space: nowrap;
+    }
+
+    .m-item .dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--orange); flex-shrink: 0;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* =============================================
+       SECTION BASE
+    ============================================= */
+    .section { padding: 108px 0; }
+
+    @media (max-width:768px) { .section { padding: 68px 0; } }
+
+    .s-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-h); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--orange);
+      padding: 6px 16px; border-radius: var(--pill);
+      border: 1px solid var(--border-orange);
+      background: rgba(255,103,0,0.055);
+      margin-bottom: 24px;
+    }
+
+    .s-title {
+      font-family: var(--font-h);
+      font-size: clamp(30px, 3.8vw, 50px);
+      font-weight: 900; line-height: 1.04;
+      letter-spacing: -0.03em; color: var(--white);
+      margin-bottom: 18px;
+    }
+
+    .s-sub {
+      font-size: 16.5px; line-height: 1.75;
+      color: rgba(255,255,255,0.44); max-width: 500px;
+    }
+
+    /* =============================================
+       STATS
+    ============================================= */
+    .stats-wrap {
+      background: var(--black-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+    }
+
+    @media (max-width:700px) { .stats-grid { grid-template-columns: repeat(2,1fr); } }
+
+    .stat-cell {
+      padding: 52px 28px; text-align: center;
+      border-right: 1px solid var(--border);
+      transition: background 0.25s ease;
+    }
+
+    .stat-cell:last-child { border-right: none; }
+
+    @media (max-width:700px) {
+      .stat-cell:nth-child(2) { border-right: none; }
+      .stat-cell:nth-child(3) { border-top: 1px solid var(--border); border-right: 1px solid var(--border); }
+      .stat-cell:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
+    }
+
+    .stat-cell:hover { background: rgba(255,103,0,0.04); }
+
+    .stat-n {
+      font-family: var(--font-h);
+      font-size: clamp(42px, 5vw, 64px);
+      font-weight: 900; letter-spacing: -0.04em;
+      color: var(--orange); line-height: 1;
+      margin-bottom: 9px;
+    }
+
+    .stat-l {
+      font-size: 12.5px; letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.36);
+    }
+
+    /* =============================================
+       SERVICIOS — border-grid
+    ============================================= */
+    .services-section { background: var(--black); }
+
+    .services-header {
+      display: flex; justify-content: space-between;
+      align-items: flex-end; gap: 28px; flex-wrap: wrap;
+      margin-bottom: 52px;
+    }
+
+    .svcs-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+    }
+
+    @media (max-width:860px) { .svcs-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width:520px) { .svcs-grid { grid-template-columns: 1fr; } }
+
+    .svc-card {
+      background: var(--black-3);
+      padding: 40px 34px;
+      position: relative; overflow: hidden;
+      transition: background 0.3s ease;
+    }
+
+    .svc-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 5% 95%, rgba(255,103,0,0.09) 0%, transparent 55%);
+      opacity: 0; transition: opacity 0.35s ease;
+    }
+
+    .svc-card:hover { background: var(--black-4); }
+    .svc-card:hover::before { opacity: 1; }
+
+    .svc-icon {
+      width: 50px; height: 50px;
+      border-radius: var(--r-md); border: 1px solid var(--border);
+      background: rgba(255,255,255,0.025);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--orange); margin-bottom: 26px;
+      transition: var(--t);
+    }
+
+    .svc-card:hover .svc-icon {
+      border-color: var(--border-orange);
+      background: rgba(255,103,0,0.08);
+    }
+
+    .svc-no {
+      font-family: var(--font-h); font-size: 10.5px;
+      font-weight: 700; letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.18); margin-bottom: 10px;
+    }
+
+    .svc-name {
+      font-family: var(--font-h); font-size: 17px;
+      font-weight: 800; color: var(--white);
+      margin-bottom: 13px; line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+
+    .svc-desc {
+      font-size: 13.5px; line-height: 1.7;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .svc-arr {
+      position: absolute; top: 32px; right: 28px;
+      color: var(--orange); opacity: 0;
+      transition: var(--t); transform: translate(-4px,4px);
+    }
+
+    .svc-card:hover .svc-arr {
+      opacity: 1; transform: translate(0,0);
+    }
+
+    /* =============================================
+       POR QUÉ TOG
+    ============================================= */
+    .why-section {
+      background: var(--black-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+
+    @media (max-width:880px) { .why-grid { grid-template-columns: 1fr; gap: 52px; } }
+
+    .why-points { display: flex; flex-direction: column; gap: 26px; margin-top: 36px; }
+
+    .why-pt { display: flex; gap: 16px; align-items: flex-start; }
+
+    .why-no {
+      font-family: var(--font-h); font-size: 10.5px; font-weight: 700;
+      color: var(--orange); opacity: 0.65; padding-top: 3px; flex-shrink: 0;
+    }
+
+    .why-pt-title {
+      font-family: var(--font-h); font-size: 15px; font-weight: 700;
+      color: var(--white); margin-bottom: 4px;
+    }
+
+    .why-pt-desc {
+      font-size: 13.5px; color: rgba(255,255,255,0.42); line-height: 1.65;
+    }
+
+    .why-metrics {
+      display: flex; flex-direction: column; gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border); border-radius: var(--r-xl); overflow: hidden;
+    }
+
+    .why-metric {
+      background: var(--black-3);
+      padding: 28px 32px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      transition: background 0.22s ease;
+    }
+
+    .why-metric:hover { background: var(--black-4); }
+
+    .why-m-label { font-size: 13.5px; color: rgba(255,255,255,0.42); }
+
+    .why-m-val {
+      font-family: var(--font-h); font-size: 26px; font-weight: 900;
+      color: var(--orange); letter-spacing: -0.03em;
+    }
+
+    /* =============================================
+       CALCULADORA BANNER
+    ============================================= */
+    .calc-bann {
+      background: var(--black-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 84px 0; position: relative; overflow: hidden;
+    }
+
+    .calc-bann::before {
+      content: '';
+      position: absolute; left: 50%; top: 50%;
+      transform: translate(-50%,-50%);
+      width: 800px; height: 300px; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(255,103,0,0.08) 0%, transparent 60%);
+    }
+
+    .calc-bann-in {
+      position: relative;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 40px; flex-wrap: wrap;
+    }
+
+    .calc-tag {
+      font-family: var(--font-h); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 12px;
+    }
+
+    .calc-title {
+      font-family: var(--font-h);
+      font-size: clamp(26px, 3.2vw, 42px);
+      font-weight: 900; letter-spacing: -0.03em;
+      color: var(--white); line-height: 1.06;
+    }
+
+    .calc-sub {
+      font-size: 16px; color: rgba(255,255,255,0.42);
+      margin-top: 12px; max-width: 420px; line-height: 1.7;
+    }
+
+    .calc-bann-act { text-align: center; flex-shrink: 0; }
+    .calc-bann-act small {
+      display: block; font-size: 12px;
+      color: rgba(255,255,255,0.27); margin-top: 10px;
+    }
+
+    /* =============================================
+       PROCESO
+    ============================================= */
+    .process-section { background: var(--black); }
+
+    .proc-steps {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl); overflow: hidden;
+    }
+
+    @media (max-width:860px) { .proc-steps { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width:480px) { .proc-steps { grid-template-columns: 1fr; } }
+
+    .proc-step {
+      background: var(--black-3);
+      padding: 44px 34px;
+      position: relative; transition: background 0.3s ease;
+    }
+
+    .proc-step:hover { background: var(--black-4); }
+
+    .step-no-lg {
+      font-family: var(--font-h); font-size: 54px; font-weight: 900;
+      color: rgba(255,255,255,0.045);
+      line-height: 1; margin-bottom: 20px; letter-spacing: -0.05em;
+    }
+
+    .step-ico {
+      position: absolute; top: 32px; right: 28px;
+      color: var(--orange); opacity: 0.55;
+    }
+
+    .step-title {
+      font-family: var(--font-h); font-size: 15.5px; font-weight: 800;
+      color: var(--white); margin-bottom: 10px;
+    }
+
+    .step-desc {
+      font-size: 13.5px; color: rgba(255,255,255,0.4); line-height: 1.65;
+    }
+
+    /* =============================================
+       TESTIMONIOS
+    ============================================= */
+    .testi-section { background: var(--black); }
+
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl); overflow: hidden;
+    }
+
+    @media (max-width:860px) { .testi-grid { grid-template-columns: 1fr; } }
+
+    .testi-card {
+      background: var(--black-3);
+      padding: 38px 34px; position: relative;
+      transition: background 0.25s ease;
+    }
+
+    .testi-card:hover { background: var(--black-4); }
+
+    .testi-qmark {
+      position: absolute; top: 28px; right: 28px;
+      font-size: 58px; line-height: 1;
+      color: rgba(255,255,255,0.038);
+      font-family: Georgia, serif;
+    }
+
+    .testi-stars { font-size: 13px; color: var(--orange); letter-spacing: 2px; margin-bottom: 18px; }
+
+    .testi-q {
+      font-size: 14.5px; line-height: 1.75;
+      color: rgba(255,255,255,0.56); margin-bottom: 28px;
+    }
+
+    .testi-au { display: flex; align-items: center; gap: 13px; }
+
+    .testi-av {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-h); font-size: 14px; font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .testi-name {
+      font-family: var(--font-h); font-size: 14px;
+      font-weight: 700; color: var(--white);
+    }
+
+    .testi-role { font-size: 12px; color: rgba(255,255,255,0.32); margin-top: 2px; }
+
+    /* =============================================
+       CTA FINAL
+    ============================================= */
+    .cta-fin {
+      background: var(--black-2);
+      border-top: 1px solid var(--border);
+      padding: 128px 0; text-align: center;
+      position: relative; overflow: hidden;
+    }
+
+    .cta-fin::before {
+      content: '';
+      position: absolute; left: 50%; top: 50%;
+      transform: translate(-50%,-62%);
+      width: 1000px; height: 480px; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(255,103,0,0.09) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .cta-fin-c { position: relative; z-index: 1; }
+
+    .cta-fin-title {
+      font-family: var(--font-h);
+      font-size: clamp(38px, 5.2vw, 70px);
+      font-weight: 900; letter-spacing: -0.04em;
+      line-height: 1.02; color: var(--white); margin-bottom: 20px;
+    }
+
+    .cta-fin-sub {
+      font-size: 17px; color: rgba(255,255,255,0.42);
+      margin-bottom: 48px; max-width: 450px;
+      margin-left: auto; margin-right: auto; line-height: 1.7;
+    }
+
+    .cta-fin-btns { display: flex; gap: 13px; justify-content: center; flex-wrap: wrap; }
+    .cta-note { font-size: 12px; color: rgba(255,255,255,0.22); margin-top: 20px; }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    .footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 68px 0 36px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.7fr 1fr 1fr 1fr; gap: 44px;
+      margin-bottom: 56px;
+    }
+
+    @media (max-width:860px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+    @media (max-width:480px) { .footer-top { grid-template-columns: 1fr; gap: 32px; } }
+
+    /* Logo footer — proporción exacta 3965:1547 */
+    .footer-logo-wrap {
+      width: min(230px, 80%);
+      aspect-ratio: 3965 / 1547;
+      margin-bottom: 16px;
+    }
+
+    .footer-logo-wrap img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    .footer-tag {
+      font-size: 13px; line-height: 1.65;
+      color: rgba(255,255,255,0.3); max-width: 210px; margin-bottom: 22px;
+    }
+
+    .f-socials { display: flex; gap: 8px; }
+
+    .f-soc {
+      width: 34px; height: 34px; border-radius: 8px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.025);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.36); transition: var(--t);
+    }
+
+    .f-soc:hover { border-color: var(--border-orange); color: var(--orange); }
+
+    .f-col-title {
+      font-family: var(--font-h); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.65); margin-bottom: 18px;
+    }
+
+    .f-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+    .f-links a {
+      font-size: 13.5px; color: rgba(255,255,255,0.35); transition: var(--t);
+    }
+
+    .f-links a:hover { color: var(--orange); }
+
+    .f-contact-item {
+      display: flex; align-items: flex-start; gap: 9px;
+      font-size: 13px; color: rgba(255,255,255,0.35);
+      margin-bottom: 11px; line-height: 1.5;
+    }
+
+    .footer-bottom {
+      padding-top: 26px;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 14px; flex-wrap: wrap;
+    }
+
+    .f-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
+
+    .f-legal { display: flex; gap: 18px; }
+
+    .f-legal a {
+      font-size: 12px; color: rgba(255,255,255,0.2); transition: var(--t);
+    }
+
+    .f-legal a:hover { color: rgba(255,255,255,0.5); }
+
+    /* =============================================
+       ANIMATIONS
+    ============================================= */
+    @keyframes fadeUp {
+      from { opacity:0; transform: translateY(30px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(34px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .rd-1 { transition-delay: 0.1s; }
+    .rd-2 { transition-delay: 0.2s; }
+    .rd-3 { transition-delay: 0.3s; }
+    .rd-4 { transition-delay: 0.4s; }
+
+    /* =============================================
+       RESPONSIVE MISC
+    ============================================= */
+    @media (max-width:640px) {
+      .hero-proof { flex-direction: column; gap: 12px; }
+      .proof-sep { display: none; }
+      .services-header { flex-direction: column; align-items: flex-start; }
+      .calc-bann-in { flex-direction: column; text-align: center; }
+      .calc-sub { margin: 8px auto 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════ NAVBAR ══════ -->
+  <nav class="nav" id="navbar">
+    <div class="container nav-inner">
+
+      <!-- Logo isotipo (1045×1099 — casi cuadrado) -->
+      <a href="index.html" class="nav-logo" aria-label="The Office Generation by CAAVI">
+        <img
+          src="https://i.imgur.com/SsuOn1V.png"
+          alt="TOG isotipo"
+          height="36"
+          style="height:36px; width:auto; object-fit:contain;"
+        />
+      </a>
+
+      <!-- Links desktop -->
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="calculadora.html">Calculadora</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+
+      <!-- CTA + toggle mobile -->
+      <div style="display:flex;align-items:center;gap:12px;">
+        <a href="calculadora.html" class="nav-cta">Cotizar Ahora</a>
+        <button class="nav-toggle" id="navTgl" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Menú mobile -->
+  <div class="nav-mobile" id="mobMenu">
+    <a href="index.html">Inicio</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="calculadora.html">Calculadora de Costos</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="calculadora.html" class="btn-f" style="border-radius:12px;justify-content:center;margin-top:10px;">
+      Cotizar Ahora
+    </a>
+  </div>
+
+  <!-- ══════════════════════════ HERO ══════ -->
+  <section class="hero">
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <div class="hero-glow hero-glow-c"></div>
+    <div class="hero-grid"></div>
+
+    <div class="hero-content">
+
+      <!-- Pill badge -->
+      <div class="hero-badge">
+        <span class="bdot"></span>
+        Comercializadora B2B · México
+      </div>
+
+      <!-- Logo principal HERO
+           Proporciones originales: 6602×2880 → ratio 2.292:1
+           Se respeta con aspect-ratio CSS -->
+      <div class="hero-logo-wrap">
+        <img
+          src="https://i.imgur.com/qFPguJt.png"
+          alt="The Office Generation by CAAVI"
+          onerror="
+            if(this.src.includes('.png')){
+              this.src='https://i.imgur.com/qFPguJt.jpg';
+            } else {
+              this.style.display='none';
+              document.getElementById('hero-logo-fb').style.display='block';
+            }
+          "
+        />
+      </div>
+      <!-- Fallback texto -->
+      <div id="hero-logo-fb" class="hero-logo-fallback" style="display:none; margin-bottom:44px;">
+        <span style="font-size:clamp(24px,3.5vw,44px);">THE <span style="color:#ff6700;">Office</span> GENERATION</span><br/>
+        <span style="font-size:clamp(14px,1.8vw,22px); color:#ff6700; font-weight:700;">by CAAVI®</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="hero-headline">
+        La nueva generación de<br/>
+        <span class="acc">oficinas que sí funcionan</span>
+      </h1>
+
+      <p class="hero-sub">
+        Equipamos, amueblamos y abastecemos empresas con precisión B2B.
+        Más de 120 compañías ya confían en The Office Generation by CAAVI®.
+      </p>
+
+      <div class="hero-ctas">
+        <a href="contacto.html" class="btn-f">
+          <i data-lucide="send" style="width:16px;height:16px;"></i>
+          Solicitar Cotización
+        </a>
+        <a href="servicios.html" class="btn-o">
+          Ver Catálogo
+          <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+        </a>
+      </div>
+
+      <div class="hero-proof">
+        <div class="proof-item"><strong>+120</strong><span>Clientes activos</span></div>
+        <div class="proof-sep"></div>
+        <div class="proof-item"><strong>98%</strong><span>Entregas puntuales</span></div>
+        <div class="proof-sep"></div>
+        <div class="proof-item">
+          <span style="color:#ff6700;letter-spacing:1px;">★★★★★</span>
+          <span>4.9/5 satisfacción</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ MARQUEE TICKER ══ -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <!-- 2× para loop continuo -->
+      <span class="m-item"><span class="dot"></span>Papelería Corporativa</span>
+      <span class="m-item"><span class="dot"></span>Limpieza e Higiene</span>
+      <span class="m-item"><span class="dot"></span>Papel Bond</span>
+      <span class="m-item"><span class="dot"></span>Tecnología para Oficina</span>
+      <span class="m-item"><span class="dot"></span>Consumibles de Impresión</span>
+      <span class="m-item"><span class="dot"></span>Equipamiento para Oficina Nueva</span>
+      <span class="m-item"><span class="dot"></span>Abastecimiento Recurrente</span>
+      <span class="m-item"><span class="dot"></span>Soluciones Urgentes</span>
+      <span class="m-item"><span class="dot"></span>Mobiliario Corporativo</span>
+      <span class="m-item"><span class="dot"></span>Gestión de Compras</span>
+      <span class="m-item"><span class="dot"></span>Requerimientos Especiales</span>
+      <span class="m-item"><span class="dot"></span>Logística y Entrega a Sitio</span>
+      <!-- Repetición -->
+      <span class="m-item"><span class="dot"></span>Papelería Corporativa</span>
+      <span class="m-item"><span class="dot"></span>Limpieza e Higiene</span>
+      <span class="m-item"><span class="dot"></span>Papel Bond</span>
+      <span class="m-item"><span class="dot"></span>Tecnología para Oficina</span>
+      <span class="m-item"><span class="dot"></span>Consumibles de Impresión</span>
+      <span class="m-item"><span class="dot"></span>Equipamiento para Oficina Nueva</span>
+      <span class="m-item"><span class="dot"></span>Abastecimiento Recurrente</span>
+      <span class="m-item"><span class="dot"></span>Soluciones Urgentes</span>
+      <span class="m-item"><span class="dot"></span>Mobiliario Corporativo</span>
+      <span class="m-item"><span class="dot"></span>Gestión de Compras</span>
+      <span class="m-item"><span class="dot"></span>Requerimientos Especiales</span>
+      <span class="m-item"><span class="dot"></span>Logística y Entrega a Sitio</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════ STATS ══════ -->
+  <div class="stats-wrap">
+    <div class="stats-grid">
+      <div class="stat-cell reveal"><div class="stat-n">+120</div><div class="stat-l">Clientes empresariales</div></div>
+      <div class="stat-cell reveal rd-1"><div class="stat-n">98%</div><div class="stat-l">SLA de entrega</div></div>
+      <div class="stat-cell reveal rd-2"><div class="stat-n">$500M+</div><div class="stat-l">MXN gestionados</div></div>
+      <div class="stat-cell reveal rd-3"><div class="stat-n">8+</div><div class="stat-l">Años de experiencia</div></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════ SERVICIOS ══════ -->
+  <section class="section services-section">
+    <div class="container">
+      <div class="services-header">
+        <div class="reveal">
+          <div class="s-label">Nuestro Catálogo</div>
+          <h2 class="s-title">Todo lo que<br/>tu oficina necesita</h2>
+        </div>
+        <div class="reveal rd-2">
+          <p class="s-sub" style="margin-bottom:20px;">Desde el primer escritorio hasta la solución de espacio completa, operamos con precisión B2B.</p>
+          <a href="servicios.html" class="btn-o" style="border-radius:10px;">
+            Ver catálogo completo
+            <i data-lucide="arrow-right" style="width:15px;height:15px;"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="svcs-grid reveal">
+        <div class="svc-card">
+          <div class="svc-no">01</div>
+          <div class="svc-icon"><i data-lucide="file-text" style="width:22px;height:22px;"></i></div>
+          <div class="svc-name">Papelería Corporativa</div>
+          <p class="svc-desc">Abastecimiento integral de papelería para oficina: bolígrafos, cuadernos, folders, archivadores y todo lo que tu operación necesita día a día.</p>
+          <div class="svc-arr"><i data-lucide="arrow-up-right" style="width:17px;height:17px;"></i></div>
+        </div>
+        <div class="svc-card">
+          <div class="svc-no">02</div>
+          <div class="svc-icon"><i data-lucide="droplets" style="width:22px;height:22px;"></i></div>
+          <div class="svc-name">Limpieza e Higiene</div>
+          <p class="svc-desc">Suministros de limpieza, desinfección e higiene para mantener tus instalaciones en óptimas condiciones de salubridad y presentación.</p>
+          <div class="svc-arr"><i data-lucide="arrow-up-right" style="width:17px;height:17px;"></i></div>
+        </div>
+        <div class="svc-card">
+          <div class="svc-no">03</div>
+          <div class="svc-icon"><i data-lucide="layers" style="width:22px;height:22px;"></i></div>
+          <div class="svc-name">Papel Bond y Alto Consumo</div>
+          <p class="svc-desc">Papel bond y papeles especializados de alto consumo con entregas programadas, volumen garantizado y precios competitivos por tonelada.</p>
+          <div class="svc-arr"><i data-lucide="arrow-up-right" style="width:17px;height:17px;"></i></div>
+        </div>
+        <div class="svc-card">
+          <div class="svc-no">04</div>
+          <div class="svc-icon"><i data-lucide="monitor" style="width:22px;height:22px;"></i></div>
+          <div class="svc-name">Tecnología para Oficina</div>
+          <p class="svc-desc">Monitores, periféricos, proyectores, teléfonos IP y equipamiento tecnológico para mantener tu operación conectada y productiva.</p>
+          <div class="svc-arr"><i data-lucide="arrow-up-right" style="width:17px;height:17px;"></i></div>
+        </div>
+        <div class="svc-card">
+          <div class="svc-no">05</div>
+          <div class="svc-icon"><i data-lucide="printer" style="width:22px;height:22px;"></i></div>
+          <div class="svc-name">Consumibles de Impresión</div>
+          <p class="svc-desc">Tintas, tóners, cintas y cartuchos compatibles o de marca original. Abastecimiento puntual para que tu operación de impresión nunca pare.</p>
+          <div class="svc-arr"><i data-lucide="arrow-up-right" style="width:17px;height:17px;"></i></div>
+        </div>
+        <div class="svc-card">
+          <div class="svc-no">06</div>
+          <div class="svc-icon"><i data-lucide="building-2" style="width:22px;height:22px;"></i></div>
+          <div class="svc-name">Equipamiento para Oficina Nueva</div>
+          <p class="svc-desc">Solución llave en mano para apertura de oficinas: desde el mobiliario hasta los consumibles iniciales, todo coordinado en una sola entrega.</p>
+          <div class="svc-arr"><i data-lucide="arrow-up-right" style="width:17px;height:17px;"></i></div>
+        </div>
+        <div class="svc-card">
+          <div class="svc-no">07</div>
+          <div class="svc-icon"><i data-lucide="refresh-cw" style="width:22px;height:22px;"></i></div>
+          <div class="svc-name">Abastecimiento Recurrente</div>
+          <p class="svc-desc">Programas de reabastecimiento automático con calendario fijo, control de inventario y alertas de stock mínimo para tu operación.</p>
+          <div class="svc-arr"><i data-lucide="arrow-up-right" style="width:17px;height:17px;"></i></div>
+        </div>
+        <div class="svc-card">
+          <div class="svc-no">08</div>
+          <div class="svc-icon"><i data-lucide="zap" style="width:22px;height:22px;"></i></div>
+          <div class="svc-name">Soluciones Urgentes</div>
+          <p class="svc-desc">Entregas express en el mismo día o siguiente día hábil para imprevistos y emergencias operativas. Respondemos cuando más lo necesitas.</p>
+          <div class="svc-arr"><i data-lucide="arrow-up-right" style="width:17px;height:17px;"></i></div>
+        </div>
+        <div class="svc-card">
+          <div class="svc-no">09</div>
+          <div class="svc-icon"><i data-lucide="armchair" style="width:22px;height:22px;"></i></div>
+          <div class="svc-name">Mobiliario y Adecuación</div>
+          <p class="svc-desc">Mobiliario corporativo de alta calidad y adecuación integral de espacios: desde el diagnóstico hasta la instalación y puesta en marcha.</p>
+          <div class="svc-arr"><i data-lucide="arrow-up-right" style="width:17px;height:17px;"></i></div>
+        </div>
+        <div class="svc-card">
+          <div class="svc-no">10</div>
+          <div class="svc-icon"><i data-lucide="bar-chart-3" style="width:22px;height:22px;"></i></div>
+          <div class="svc-name">Gestión de Compras Consolidadas</div>
+          <p class="svc-desc">Centralizamos todas tus compras de insumos en un solo proveedor: mayor poder de negociación, menos tiempo administrativo, mejor precio.</p>
+          <div class="svc-arr"><i data-lucide="arrow-up-right" style="width:17px;height:17px;"></i></div>
+        </div>
+        <div class="svc-card">
+          <div class="svc-no">11</div>
+          <div class="svc-icon"><i data-lucide="settings-2" style="width:22px;height:22px;"></i></div>
+          <div class="svc-name">Requerimientos Especiales</div>
+          <p class="svc-desc">Gestionamos productos fuera de catálogo, importaciones y solicitudes específicas que otros proveedores no pueden o no quieren atender.</p>
+          <div class="svc-arr"><i data-lucide="arrow-up-right" style="width:17px;height:17px;"></i></div>
+        </div>
+        <div class="svc-card">
+          <div class="svc-no">12</div>
+          <div class="svc-icon"><i data-lucide="truck" style="width:22px;height:22px;"></i></div>
+          <div class="svc-name">Logística y Entrega a Sitio</div>
+          <p class="svc-desc">Entrega directa en tus instalaciones con seguimiento en tiempo real, acuse de recibo digital y coordinación con tu equipo de almacén.</p>
+          <div class="svc-arr"><i data-lucide="arrow-up-right" style="width:17px;height:17px;"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ POR QUÉ TOG ══════ -->
+  <section class="section why-section">
+    <div class="container">
+      <div class="why-grid">
+        <div class="reveal">
+          <div class="s-label">Por Qué Elegirnos</div>
+          <h2 class="s-title">No somos un<br/>proveedor. Somos tu<br/>ventaja competitiva.</h2>
+          <p class="s-sub">En un mercado saturado de opciones genéricas, TOG entrega resultados medibles y una operación que escala contigo.</p>
+          <div class="why-points">
+            <div class="why-pt">
+              <span class="why-no">01</span>
+              <div>
+                <div class="why-pt-title">Transparencia total en costos</div>
+                <p class="why-pt-desc">Sin cargos ocultos. Breakdown completo de cada operación.</p>
+              </div>
+            </div>
+            <div class="why-pt">
+              <span class="why-no">02</span>
+              <div>
+                <div class="why-pt-title">Escalabilidad garantizada</div>
+                <p class="why-pt-desc">10 unidades o 10,000. Crecemos sin comprometer calidad.</p>
+              </div>
+            </div>
+            <div class="why-pt">
+              <span class="why-no">03</span>
+              <div>
+                <div class="why-pt-title">Ejecutivo de cuenta dedicado</div>
+                <p class="why-pt-desc">Un punto de contacto que conoce tu negocio a fondo.</p>
+              </div>
+            </div>
+            <div class="why-pt">
+              <span class="why-no">04</span>
+              <div>
+                <div class="why-pt-title">Respuesta en menos de 24h</div>
+                <p class="why-pt-desc">Cotizaciones e incidencias con urgencia ejecutiva siempre.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="why-metrics reveal rd-2">
+          <div class="why-metric">
+            <span class="why-m-label">SLA de entrega puntual</span>
+            <span class="why-m-val">98%</span>
+          </div>
+          <div class="why-metric">
+            <span class="why-m-label">Tiempo máx. de respuesta</span>
+            <span class="why-m-val">24h</span>
+          </div>
+          <div class="why-metric">
+            <span class="why-m-label">Reducción en costos</span>
+            <span class="why-m-val">−30%</span>
+          </div>
+          <div class="why-metric">
+            <span class="why-m-label">Satisfacción de clientes</span>
+            <span class="why-m-val">4.9/5</span>
+          </div>
+          <div class="why-metric">
+            <span class="why-m-label">Años de trayectoria</span>
+            <span class="why-m-val">8+</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CALCULADORA BANNER ═══ -->
+  <div class="calc-bann">
+    <div class="container">
+      <div class="calc-bann-in">
+        <div class="reveal">
+          <div class="calc-tag">Herramienta Gratuita</div>
+          <h2 class="calc-title">Estima tu cotización<br/>en minutos</h2>
+          <p class="calc-sub">Sin registro, sin esperas. Selecciona tu tipo de servicio, volumen y logística — resultado al instante.</p>
+        </div>
+        <div class="calc-bann-act reveal rd-2">
+          <a href="calculadora.html" class="btn-f" style="font-size:16px;padding:16px 44px;">
+            <i data-lucide="calculator" style="width:18px;height:18px;"></i>
+            Usar Calculadora Gratis
+          </a>
+          <small>Sin compromisos · Resultado inmediato</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ PROCESO ══════ -->
+  <section class="section process-section">
+    <div class="container">
+      <div class="reveal" style="text-align:center;max-width:540px;margin:0 auto 52px;">
+        <div class="s-label" style="display:inline-flex;">Cómo Trabajamos</div>
+        <h2 class="s-title">De la solicitud al<br/>resultado en 4 pasos</h2>
+        <p class="s-sub" style="margin:0 auto;">Un proceso sin fricción diseñado para maximizar resultados desde el primer contacto.</p>
+      </div>
+
+      <div class="proc-steps reveal">
+        <div class="proc-step">
+          <div class="step-no-lg">01</div>
+          <i data-lucide="zap" class="step-ico" style="width:19px;height:19px;"></i>
+          <div class="step-title">Cotización rápida</div>
+          <p class="step-desc">Usa la calculadora o contáctanos. Estimación en menos de 24 horas hábiles, sin compromiso.</p>
+        </div>
+        <div class="proc-step">
+          <div class="step-no-lg">02</div>
+          <i data-lucide="file-text" class="step-ico" style="width:19px;height:19px;"></i>
+          <div class="step-title">Propuesta a medida</div>
+          <p class="step-desc">Diseñamos una solución específica para tus necesidades, volumen y presupuesto exacto.</p>
+        </div>
+        <div class="proc-step">
+          <div class="step-no-lg">03</div>
+          <i data-lucide="truck" class="step-ico" style="width:19px;height:19px;"></i>
+          <div class="step-title">Operación ágil</div>
+          <p class="step-desc">Activamos con documentación clara, fechas comprometidas y trazabilidad total.</p>
+        </div>
+        <div class="proc-step">
+          <div class="step-no-lg">04</div>
+          <i data-lucide="check-circle" class="step-ico" style="width:19px;height:19px;"></i>
+          <div class="step-title">Entrega y seguimiento</div>
+          <p class="step-desc">Cumplimos y medimos. Tu ejecutivo te mantiene informado en cada etapa sin excepción.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ TESTIMONIOS ══════ -->
+  <section class="section testi-section">
+    <div class="container">
+      <div class="reveal" style="text-align:center;max-width:480px;margin:0 auto 52px;">
+        <div class="s-label" style="display:inline-flex;">Testimonios</div>
+        <h2 class="s-title">Lo que dicen<br/>nuestros clientes</h2>
+      </div>
+
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <div class="testi-qmark">"</div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-q">"Llevamos 3 años con TOG y la relación ha sido excepcional. Transparencia total en costos y cero problemas en entregas. Son un socio estratégico real."</p>
+          <div class="testi-au">
+            <div class="testi-av" style="background:linear-gradient(135deg,#ff6700,#e05a00);">C</div>
+            <div>
+              <div class="testi-name">Carlos Mendoza</div>
+              <div class="testi-role">Dir. Compras · Industrias Norte</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal rd-1">
+          <div class="testi-qmark">"</div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-q">"La calculadora me ahorró tiempo valioso. En 5 minutos tenía un estimado real y la propuesta formal llegó al día siguiente. Así es un proveedor moderno."</p>
+          <div class="testi-au">
+            <div class="testi-av" style="background:linear-gradient(135deg,#727272,#4a4a4a);">P</div>
+            <div>
+              <div class="testi-name">Patricia Villarreal</div>
+              <div class="testi-role">CEO · LogiMex Solutions</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal rd-2">
+          <div class="testi-qmark">"</div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-q">"Redujimos costos de abastecimiento un 28% en el primer año. TOG no solo entrega — optimiza. Los recomendamos a todos nuestros socios de negocio."</p>
+          <div class="testi-au">
+            <div class="testi-av" style="background:linear-gradient(135deg,#ff6700,#727272);">R</div>
+            <div>
+              <div class="testi-name">Roberto Sánchez</div>
+              <div class="testi-role">CFO · Grupo Comercial Sur</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ CTA FINAL ══════ -->
+  <section class="cta-fin">
+    <div class="container">
+      <div class="cta-fin-c reveal">
+        <div class="s-label" style="display:inline-flex;margin-bottom:28px;">Empieza Hoy</div>
+        <h2 class="cta-fin-title">¿Listo para operar<br/>a otro nivel?</h2>
+        <p class="cta-fin-sub">Recibe tu propuesta personalizada en menos de 24 horas. Sin compromisos, sin letra chica.</p>
+        <div class="cta-fin-btns">
+          <a href="contacto.html" class="btn-f" style="font-size:16px;padding:16px 44px;">
+            <i data-lucide="send" style="width:17px;height:17px;"></i>
+            Solicitar Cotización
+          </a>
+          <a href="calculadora.html" class="btn-o" style="font-size:16px;padding:16px 40px;">
+            <i data-lucide="calculator" style="width:17px;height:17px;"></i>
+            Usar Calculadora
+          </a>
+        </div>
+        <p class="cta-note">Respuesta garantizada en menos de 24 horas hábiles</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════ FOOTER ══════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+
+        <!-- Col 1: Logo + info -->
+        <div>
+          <!-- Logo footer — proporción exacta 3965:1547 ≈ 2.563:1 -->
+          <div class="footer-logo-wrap">
+            <img
+              src="https://i.imgur.com/mxwkuNU.png"
+              alt="The Office Generation by CAAVI"
+              onerror="
+                this.style.display='none';
+                document.getElementById('footer-logo-fb').style.display='block';
+              "
+            />
+          </div>
+          <!-- Fallback -->
+          <div id="footer-logo-fb" style="display:none; font-family:'Outfit',sans-serif; font-size:15px; font-weight:900; color:white; margin-bottom:14px; line-height:1.2;">
+            THE <span style="color:#ff6700;">Office</span> GENERATION<br/>
+            <span style="font-size:11px;color:#ff6700;">by CAAVI®</span>
+          </div>
+
+          <p class="footer-tag">Comercializadora estratégica B2B. Tu socio de confianza para equipar, abastecer y escalar.</p>
+          <div class="f-socials">
+            <a href="#" class="f-soc" aria-label="LinkedIn"><i data-lucide="linkedin" style="width:14px;height:14px;"></i></a>
+            <a href="#" class="f-soc" aria-label="Twitter"><i data-lucide="twitter" style="width:14px;height:14px;"></i></a>
+            <a href="https://wa.me/521234567890" class="f-soc" aria-label="WhatsApp"><i data-lucide="message-circle" style="width:14px;height:14px;"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2 -->
+        <div>
+          <p class="f-col-title">Navegar</p>
+          <ul class="f-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="calculadora.html">Calculadora</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3 -->
+        <div>
+          <p class="f-col-title">Servicios</p>
+          <ul class="f-links">
+            <li><a href="servicios.html#papeleria">Papelería Corporativa</a></li>
+            <li><a href="servicios.html#limpieza">Limpieza e Higiene</a></li>
+            <li><a href="servicios.html#tecnologia">Tecnología para Oficina</a></li>
+            <li><a href="servicios.html#mobiliario">Mobiliario y Adecuación</a></li>
+            <li><a href="servicios.html#logistica">Logística y Entrega</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4 -->
+        <div>
+          <p class="f-col-title">Contacto</p>
+          <div class="f-contact-item">
+            <i data-lucide="map-pin" style="width:13px;height:13px;color:#ff6700;flex-shrink:0;margin-top:2px;"></i>
+            <span>Av. Insurgentes Sur 1234, CDMX</span>
+          </div>
+          <div class="f-contact-item">
+            <i data-lucide="mail" style="width:13px;height:13px;color:#ff6700;flex-shrink:0;"></i>
+            <a href="mailto:contacto@theofficegeneration.mx" style="transition:color 0.2s;" onmouseover="this.style.color='#ff6700'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">contacto@theofficegeneration.mx</a>
+          </div>
+          <div class="f-contact-item">
+            <i data-lucide="phone" style="width:13px;height:13px;color:#ff6700;flex-shrink:0;"></i>
+            <a href="tel:+525512345678" style="transition:color 0.2s;" onmouseover="this.style.color='#ff6700'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">+52 (55) 1234-5678</a>
+          </div>
+          <a href="contacto.html" class="btn-o" style="border-radius:8px;font-size:13px;padding:9px 18px;margin-top:6px;display:inline-flex;">
+            Escríbenos
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="f-copy">© 2026 The Office Generation by CAAVI®. Todos los derechos reservados.</p>
+        <div class="f-legal">
+          <a href="#">Aviso de Privacidad</a>
+          <a href="#">Términos de Uso</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════ JS ══════ -->
+  <script>
+    // Init Lucide
+    lucide.createIcons();
+
+    // Navbar scroll
+    const nav = document.getElementById('navbar');
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Mobile menu
+    const toggle = document.getElementById('navTgl');
+    const mob    = document.getElementById('mobMenu');
+    const spans  = toggle.querySelectorAll('span');
+
+    toggle.addEventListener('click', () => {
+      const open = mob.classList.toggle('open');
+      if (open) {
+        spans[0].style.cssText = 'transform:rotate(45deg) translate(5px,5px)';
+        spans[1].style.cssText = 'opacity:0; transform:scaleX(0)';
+        spans[2].style.cssText = 'transform:rotate(-45deg) translate(5px,-5px)';
+      } else {
+        spans.forEach(s => s.style.cssText = '');
+      }
+    });
+
+    mob.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => {
+        mob.classList.remove('open');
+        spans.forEach(s => s.style.cssText = '');
+      })
+    );
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.07, rootMargin: '0px 0px -24px 0px' })
+    .observe
+    // Fix: observe each element
+    ; reveals.forEach(el =>
+      new IntersectionObserver((en) => {
+        if (en[0].isIntersecting) {
+          en[0].target.classList.add('visible');
+        }
+      }, { threshold: 0.07, rootMargin: '0px 0px -24px 0px' }).observe(el)
+    );
+  </script>
+</body>
+</html>

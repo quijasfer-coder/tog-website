@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Solicita información sobre los servicios de The Office Generation by CAAVI®. Selecciona lo que necesitas y te contactamos." />
+  <title>Solicitar Información — The Office Generation by CAAVI®</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — TOG Brand (same as index.html)
+    ============================================================ */
+    :root {
+      --black:         #070707;
+      --black-2:       #0d0d0d;
+      --black-3:       #111111;
+      --black-4:       #161616;
+      --gray:          #727272;
+      --gray-lt:       #9a9a9a;
+      --light:         #efeaea;
+      --orange:        #ff6700;
+      --orange-dk:     #e05a00;
+      --orange-glow:   rgba(255,103,0,0.15);
+      --white:         #ffffff;
+      --border:        rgba(255,255,255,0.07);
+      --border-orange: rgba(255,103,0,0.22);
+      --font-h: 'Outfit', sans-serif;
+      --font-b: 'Inter', sans-serif;
+      --nav-h:   68px;
+      --pill:    100px;
+      --r-md:    12px;
+      --t:       all 0.22s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--light);
+      font-family: var(--font-b);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 { font-family: var(--font-h); font-weight: 800; color: var(--white); line-height: 1.15; }
+
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: var(--font-b); }
+
+    /* ── NAVBAR ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      border-bottom: 1px solid transparent;
+      transition: var(--t);
+    }
+    .nav.scrolled {
+      background: rgba(7,7,7,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom-color: var(--border);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 28px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo img { height: 36px; width: auto; object-fit: contain; display: block; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--gray-lt);
+      transition: var(--t);
+      letter-spacing: .02em;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--white); }
+    .nav-cta {
+      background: var(--orange);
+      color: var(--white) !important;
+      padding: 8px 18px;
+      border-radius: var(--pill);
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .nav-cta:hover { background: var(--orange-dk) !important; }
+
+    /* ── CONTAINER ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+
+    /* ── HERO ── */
+    .hero-req {
+      padding: calc(var(--nav-h) + 80px) 0 60px;
+      text-align: center;
+      position: relative;
+    }
+    .hero-req::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 700px 500px at 50% 0%, rgba(255,103,0,0.10), transparent 70%);
+      pointer-events: none;
+    }
+    .s-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border-orange);
+      color: var(--orange);
+      padding: 6px 16px;
+      border-radius: var(--pill);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .hero-req h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 900;
+      margin-bottom: 18px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-req h1 span { color: var(--orange); }
+    .hero-req p {
+      font-size: 17px;
+      color: var(--gray-lt);
+      max-width: 520px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+    }
+
+    /* ── SECTION HEADER ── */
+    .sec-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+    .sec-title {
+      font-family: var(--font-h);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .sec-sub {
+      color: var(--gray-lt);
+      font-size: 15px;
+      max-width: 540px;
+      line-height: 1.7;
+    }
+
+    /* ── SERVICES GRID (same border-grid as home) ── */
+    .svcs-section {
+      padding: 80px 0 0;
+    }
+    .svcs-head {
+      margin-bottom: 40px;
+    }
+
+    .svcs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+    @media (max-width: 860px) { .svcs-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .svcs-grid { grid-template-columns: 1fr; } }
+
+    .svc-card {
+      position: relative;
+      background: var(--black-2);
+      padding: 28px 26px 26px;
+      cursor: pointer;
+      transition: var(--t);
+      user-select: none;
+    }
+    .svc-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1.5px solid var(--orange);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s;
+    }
+    .svc-card:hover { background: var(--black-4); }
+    .svc-card:hover::before { opacity: 0.4; }
+    .svc-card.selected { background: var(--black-4); }
+    .svc-card.selected::before { opacity: 1; }
+
+    .svc-no {
+      font-family: var(--font-h);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gray);
+      letter-spacing: .08em;
+      margin-bottom: 16px;
+    }
+    .svc-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(255,103,0,0.10);
+      border: 1px solid var(--border-orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      color: var(--orange);
+      transition: var(--t);
+    }
+    .svc-card:hover .svc-icon,
+    .svc-card.selected .svc-icon {
+      background: rgba(255,103,0,0.18);
+    }
+    .svc-name {
+      font-family: var(--font-h);
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--white);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .svc-desc {
+      font-size: 13px;
+      color: var(--gray-lt);
+      line-height: 1.6;
+    }
+    /* Checkmark badge */
+    .svc-check {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--t);
+    }
+    .svc-card.selected .svc-check {
+      background: var(--orange);
+      border-color: var(--orange);
+    }
+    .svc-check svg { opacity: 0; transition: opacity 0.15s; width: 12px; height: 12px; }
+    .svc-card.selected .svc-check svg { opacity: 1; }
+
+    /* ── CONTACT FORM SECTION ── */
+    .form-section {
+      padding: 80px 0 100px;
+    }
+    .form-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    @media (max-width: 860px) { .form-layout { grid-template-columns: 1fr; gap: 40px; } }
+
+    .form-info { padding-top: 8px; }
+    .form-info .sec-title { margin-bottom: 16px; }
+    .form-info .sec-sub { margin-bottom: 32px; }
+
+    .form-perks { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .form-perk {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--gray-lt);
+    }
+    .perk-dot {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(255,103,0,0.12);
+      border: 1px solid var(--border-orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .perk-dot i { color: var(--orange); }
+
+    /* Form card */
+    .form-card {
+      background: var(--black-2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 32px;
+    }
+
+    .field-group { margin-bottom: 20px; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 520px) { .field-row { grid-template-columns: 1fr; } }
+
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--gray-lt);
+      margin-bottom: 8px;
+    }
+    input, select, textarea {
+      width: 100%;
+      background: var(--black-3);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 10px;
+      padding: 12px 14px;
+      color: var(--white);
+      font-family: var(--font-b);
+      font-size: 14px;
+      transition: border-color 0.22s;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    input::placeholder, textarea::placeholder { color: var(--gray); }
+    input:focus, select:focus, textarea:focus { border-color: var(--orange); }
+    select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23727272' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
+    select option { background: var(--black-3); }
+    textarea { resize: vertical; min-height: 110px; }
+
+    /* Selected services summary in form */
+    .selected-summary {
+      background: rgba(255,103,0,0.07);
+      border: 1px solid var(--border-orange);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      color: var(--light);
+      display: none;
+    }
+    .selected-summary.visible { display: block; }
+    .selected-summary strong { color: var(--orange); display: block; margin-bottom: 6px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; font-family: var(--font-h); }
+    .selected-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .sel-tag {
+      background: rgba(255,103,0,0.12);
+      border: 1px solid rgba(255,103,0,0.3);
+      color: var(--orange);
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 11.5px;
+      font-weight: 500;
+    }
+    .no-selection-hint {
+      font-size: 13px;
+      color: var(--gray);
+      text-align: center;
+      padding: 8px;
+    }
+
+    /* Submit button */
+    .btn-submit {
+      width: 100%;
+      background: var(--orange);
+      color: var(--white);
+      border: none;
+      border-radius: var(--pill);
+      padding: 15px 24px;
+      font-family: var(--font-h);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      transition: var(--t);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .btn-submit:hover { background: var(--orange-dk); transform: translateY(-1px); }
+    .btn-submit:active { transform: translateY(0); }
+
+    /* ── SUCCESS STATE ── */
+    .success-overlay {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .success-overlay.visible { display: block; }
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(255,103,0,0.12);
+      border: 2px solid var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .success-overlay h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    .success-overlay p { color: var(--gray-lt); font-size: 14px; }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 28px;
+    }
+
+    /* ── FOOTER ── */
+    .footer-mini {
+      border-top: 1px solid var(--border);
+      padding: 28px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .footer-mini a { color: var(--gray-lt); transition: var(--t); }
+    .footer-mini a:hover { color: var(--orange); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════ NAVBAR ══════════════════ -->
+  <nav class="nav" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="The Office Generation by CAAVI">
+        <img
+          src="https://i.imgur.com/SsuOn1V.png"
+          alt="TOG isotipo"
+          onerror="this.src='https://i.imgur.com/SsuOn1V.jpg'; this.onerror=null;"
+        />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="calculadora.html" class="active">Cotizar</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="contacto.html" class="nav-cta">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ══════════════════ HERO ══════════════════ -->
+  <section class="hero-req">
+    <div class="container">
+      <div class="s-label">
+        <i data-lucide="mail" style="width:12px;height:12px;"></i>
+        Solicitud de Información
+      </div>
+      <h1>Cuéntanos qué<br/>necesita tu <span>oficina</span></h1>
+      <p>Selecciona los servicios que te interesan, déjanos tus datos y nuestro equipo de ventas te contacta con una propuesta a medida.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════ STEP 1: SERVICES ══════════════════ -->
+  <section class="svcs-section">
+    <div class="container">
+      <div class="svcs-head reveal">
+        <div class="sec-label">Paso 1</div>
+        <h2 class="sec-title">¿Qué servicios necesitas?</h2>
+        <p class="sec-sub">Puedes seleccionar uno o varios. Nuestro equipo te preparará una propuesta personalizada para cada área.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="svcs-grid reveal">
+
+        <div class="svc-card" data-svc="Papelería Corporativa" onclick="toggleService(this)">
+          <div class="svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="svc-no">01</div>
+          <div class="svc-icon"><i data-lucide="file-text" style="width:18px;height:18px;"></i></div>
+          <div class="svc-name">Papelería Corporativa</div>
+          <p class="svc-desc">Bolígrafos, cuadernos, folders, archivadores y todo lo que tu operación necesita día a día.</p>
+        </div>
+
+        <div class="svc-card" data-svc="Limpieza e Higiene" onclick="toggleService(this)">
+          <div class="svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="svc-no">02</div>
+          <div class="svc-icon"><i data-lucide="droplets" style="width:18px;height:18px;"></i></div>
+          <div class="svc-name">Limpieza e Higiene</div>
+          <p class="svc-desc">Desinfectantes, jabón, papel higiénico y suministros de higiene para tus instalaciones.</p>
+        </div>
+
+        <div class="svc-card" data-svc="Papel Bond y Alto Consumo" onclick="toggleService(this)">
+          <div class="svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="svc-no">03</div>
+          <div class="svc-icon"><i data-lucide="layers" style="width:18px;height:18px;"></i></div>
+          <div class="svc-name">Papel Bond y Alto Consumo</div>
+          <p class="svc-desc">Papel bond T/Carta, T/Oficio y papeles especializados con entregas por volumen y calendario fijo.</p>
+        </div>
+
+        <div class="svc-card" data-svc="Tecnología para Oficina" onclick="toggleService(this)">
+          <div class="svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="svc-no">04</div>
+          <div class="svc-icon"><i data-lucide="monitor" style="width:18px;height:18px;"></i></div>
+          <div class="svc-name">Tecnología para Oficina</div>
+          <p class="svc-desc">Monitores, periféricos, proyectores, teléfonos IP y equipamiento para mantener tu equipo conectado.</p>
+        </div>
+
+        <div class="svc-card" data-svc="Consumibles de Impresión" onclick="toggleService(this)">
+          <div class="svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="svc-no">05</div>
+          <div class="svc-icon"><i data-lucide="printer" style="width:18px;height:18px;"></i></div>
+          <div class="svc-name">Consumibles de Impresión</div>
+          <p class="svc-desc">Tintas, tóners, cintas y cartuchos originales o compatibles. Abastecimiento para todas las marcas.</p>
+        </div>
+
+        <div class="svc-card" data-svc="Equipamiento para Oficina Nueva" onclick="toggleService(this)">
+          <div class="svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="svc-no">06</div>
+          <div class="svc-icon"><i data-lucide="building-2" style="width:18px;height:18px;"></i></div>
+          <div class="svc-name">Equipamiento para Oficina Nueva</div>
+          <p class="svc-desc">Solución llave en mano: mobiliario, tech y consumibles iniciales coordinados en una sola entrega.</p>
+        </div>
+
+        <div class="svc-card" data-svc="Abastecimiento Recurrente" onclick="toggleService(this)">
+          <div class="svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="svc-no">07</div>
+          <div class="svc-icon"><i data-lucide="refresh-cw" style="width:18px;height:18px;"></i></div>
+          <div class="svc-name">Abastecimiento Recurrente</div>
+          <p class="svc-desc">Reabastecimiento automático con calendario fijo, control de inventario y alertas de stock mínimo.</p>
+        </div>
+
+        <div class="svc-card" data-svc="Soluciones Urgentes" onclick="toggleService(this)">
+          <div class="svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="svc-no">08</div>
+          <div class="svc-icon"><i data-lucide="zap" style="width:18px;height:18px;"></i></div>
+          <div class="svc-name">Soluciones Urgentes</div>
+          <p class="svc-desc">Entregas express el mismo día o siguiente hábil. Para imprevistos y emergencias operativas.</p>
+        </div>
+
+        <div class="svc-card" data-svc="Mobiliario y Adecuación de Espacios" onclick="toggleService(this)">
+          <div class="svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="svc-no">09</div>
+          <div class="svc-icon"><i data-lucide="armchair" style="width:18px;height:18px;"></i></div>
+          <div class="svc-name">Mobiliario y Adecuación</div>
+          <p class="svc-desc">Escritorios, sillas ergonómicas, mesas de reunión y adecuación integral de espacios corporativos.</p>
+        </div>
+
+        <div class="svc-card" data-svc="Gestión de Compras Consolidadas" onclick="toggleService(this)">
+          <div class="svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="svc-no">10</div>
+          <div class="svc-icon"><i data-lucide="bar-chart-3" style="width:18px;height:18px;"></i></div>
+          <div class="svc-name">Gestión de Compras Consolidadas</div>
+          <p class="svc-desc">Un solo proveedor para todos tus insumos. Menos carga administrativa, mejor precio por volumen.</p>
+        </div>
+
+        <div class="svc-card" data-svc="Requerimientos Especiales" onclick="toggleService(this)">
+          <div class="svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="svc-no">11</div>
+          <div class="svc-icon"><i data-lucide="settings-2" style="width:18px;height:18px;"></i></div>
+          <div class="svc-name">Requerimientos Especiales</div>
+          <p class="svc-desc">Productos fuera de catálogo, importaciones específicas y solicitudes que otros no pueden atender.</p>
+        </div>
+
+        <div class="svc-card" data-svc="Logística y Entrega a Sitio" onclick="toggleService(this)">
+          <div class="svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="svc-no">12</div>
+          <div class="svc-icon"><i data-lucide="truck" style="width:18px;height:18px;"></i></div>
+          <div class="svc-name">Logística y Entrega a Sitio</div>
+          <p class="svc-desc">Entrega directa con seguimiento en tiempo real, acuse digital y coordinación con tu almacén.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ STEP 2: CONTACT FORM ══════════════════ -->
+  <section class="form-section" id="form-section">
+    <div class="container">
+      <div class="form-layout">
+
+        <!-- Left: Info -->
+        <div class="form-info reveal">
+          <div class="sec-label">Paso 2</div>
+          <h2 class="sec-title">Déjanos tus datos</h2>
+          <p class="sec-sub">Nuestro equipo de ventas revisará tu solicitud y te contactará en menos de 24 horas hábiles con una propuesta personalizada.</p>
+
+          <ul class="form-perks">
+            <li class="form-perk">
+              <div class="perk-dot"><i data-lucide="clock" style="width:11px;height:11px;"></i></div>
+              <span>Respuesta en menos de 24 horas hábiles</span>
+            </li>
+            <li class="form-perk">
+              <div class="perk-dot"><i data-lucide="shield-check" style="width:11px;height:11px;"></i></div>
+              <span>Sin compromisos ni costos ocultos</span>
+            </li>
+            <li class="form-perk">
+              <div class="perk-dot"><i data-lucide="user" style="width:11px;height:11px;"></i></div>
+              <span>Ejecutivo de cuenta asignado desde el primer contacto</span>
+            </li>
+            <li class="form-perk">
+              <div class="perk-dot"><i data-lucide="package" style="width:11px;height:11px;"></i></div>
+              <span>Propuesta adaptada a tu volumen y presupuesto</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="form-card reveal">
+
+          <!-- Selected services summary -->
+          <div class="selected-summary" id="selectedSummary">
+            <strong>Servicios seleccionados</strong>
+            <div class="selected-tags" id="selectedTags"></div>
+          </div>
+          <div class="no-selection-hint" id="noSelectionHint">
+            ← Selecciona al menos un servicio arriba
+          </div>
+
+          <form id="requestForm" onsubmit="submitForm(event)" novalidate>
+
+            <div class="field-row">
+              <div class="field-group">
+                <label for="nombre">Nombre *</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required />
+              </div>
+              <div class="field-group">
+                <label for="empresa">Empresa *</label>
+                <input type="text" id="empresa" name="empresa" placeholder="Razón social o nombre" required />
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field-group">
+                <label for="email">Correo electrónico *</label>
+                <input type="email" id="email" name="email" placeholder="correo@empresa.com" required />
+              </div>
+              <div class="field-group">
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="+52 55 0000 0000" />
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="tamano">Tamaño de empresa</label>
+              <select id="tamano" name="tamano">
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="1-10">1 – 10 colaboradores</option>
+                <option value="11-50">11 – 50 colaboradores</option>
+                <option value="51-200">51 – 200 colaboradores</option>
+                <option value="200+">Más de 200 colaboradores</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="mensaje">¿Algo más que debamos saber?</label>
+              <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos sobre tu operación, frecuencia de compra, proveedores actuales o cualquier detalle útil..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submitBtn">
+              <i data-lucide="send" style="width:16px;height:16px;"></i>
+              Enviar solicitud
+            </button>
+
+          </form>
+
+          <!-- Success state -->
+          <div class="success-overlay" id="successOverlay">
+            <div class="success-icon">
+              <i data-lucide="check" style="width:28px;height:28px;color:#ff6700;"></i>
+            </div>
+            <h3>¡Solicitud enviada!</h3>
+            <p style="margin-top:8px;">Nuestro equipo revisará tu solicitud y te contactará en menos de 24 horas hábiles con una propuesta personalizada.</p>
+            <button onclick="resetForm()" style="margin-top:24px; background:transparent; border:1px solid rgba(255,255,255,0.15); color:var(--gray-lt); padding:10px 22px; border-radius:var(--pill); font-size:13px; transition:var(--t);"
+              onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'"
+              onmouseout="this.style.borderColor='rgba(255,255,255,0.15)';this.style.color='var(--gray-lt)'">
+              Enviar otra solicitud
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ FOOTER MINI ══════════════════ -->
+  <footer class="footer-mini">
+    <p>© 2026 <strong>The Office Generation by CAAVI®</strong> — Todos los derechos reservados &nbsp;·&nbsp;
+      <a href="index.html">Inicio</a> &nbsp;·&nbsp;
+      <a href="servicios.html">Servicios</a> &nbsp;·&nbsp;
+      <a href="contacto.html">Contacto</a>
+    </p>
+  </footer>
+
+  <script>
+    // ── Navbar scroll effect ──
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // ── Lucide init ──
+    lucide.createIcons();
+
+    // ── Scroll reveal ──
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // ── Service toggle ──
+    const selectedServices = new Set();
+
+    function toggleService(card) {
+      const svc = card.getAttribute('data-svc');
+      if (selectedServices.has(svc)) {
+        selectedServices.delete(svc);
+        card.classList.remove('selected');
+      } else {
+        selectedServices.add(svc);
+        card.classList.add('selected');
+      }
+      updateSummary();
+    }
+
+    function updateSummary() {
+      const summary = document.getElementById('selectedSummary');
+      const tags = document.getElementById('selectedTags');
+      const hint = document.getElementById('noSelectionHint');
+
+      if (selectedServices.size === 0) {
+        summary.classList.remove('visible');
+        hint.style.display = 'block';
+        tags.innerHTML = '';
+      } else {
+        summary.classList.add('visible');
+        hint.style.display = 'none';
+        tags.innerHTML = [...selectedServices].map(s =>
+          `<span class="sel-tag">${s}</span>`
+        ).join('');
+      }
+    }
+
+    // ── Form submit ──
+    function submitForm(e) {
+      e.preventDefault();
+
+      const nombre = document.getElementById('nombre').value.trim();
+      const email  = document.getElementById('email').value.trim();
+      const empresa = document.getElementById('empresa').value.trim();
+
+      if (!nombre || !email || !empresa) {
+        // Simple highlight
+        ['nombre','email','empresa'].forEach(id => {
+          const el = document.getElementById(id);
+          if (!el.value.trim()) el.style.borderColor = 'var(--orange)';
+          else el.style.borderColor = '';
+        });
+        return;
+      }
+
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<i data-lucide="loader-2" style="width:16px;height:16px;"></i> Enviando...';
+      lucide.createIcons();
+
+      // Simulate async send (replace with fetch() to your backend/form service)
+      setTimeout(() => {
+        document.getElementById('requestForm').style.display = 'none';
+        document.getElementById('noSelectionHint').style.display = 'none';
+        document.getElementById('selectedSummary').classList.remove('visible');
+        document.getElementById('successOverlay').classList.add('visible');
+        lucide.createIcons();
+      }, 1200);
+    }
+
+    function resetForm() {
+      document.getElementById('requestForm').reset();
+      document.getElementById('requestForm').style.display = 'block';
+      document.getElementById('successOverlay').classList.remove('visible');
+      document.getElementById('submitBtn').disabled = false;
+      document.getElementById('submitBtn').innerHTML = '<i data-lucide="send" style="width:16px;height:16px;"></i> Enviar solicitud';
+
+      selectedServices.clear();
+      document.querySelectorAll('.svc-card.selected').forEach(c => c.classList.remove('selected'));
+      updateSummary();
+      lucide.createIcons();
+    }
+  </script>
+</body>
+</html>
