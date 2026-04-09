@@ -885,6 +885,27 @@
     /* =============================================
        RESPONSIVE MISC
     ============================================= */
+    /* Hero visual */
+    .hero-visual {
+      margin-top: 52px;
+    }
+    .hero-visual img {
+      width: 100%; max-width: 520px;
+      border-radius: 18px;
+      opacity: 0.92;
+      box-shadow: 0 32px 80px rgba(255,103,0,0.12), 0 8px 24px rgba(0,0,0,0.5);
+    }
+
+    /* Why visual wrapper */
+    .why-right { display: flex; flex-direction: column; gap: 0; }
+    .why-right-img {
+      border-radius: 16px 16px 0 0;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-bottom: none;
+    }
+    .why-right-img img { width: 100%; display: block; }
+
     @media (max-width:640px) {
       .hero-proof { flex-direction: column; gap: 12px; }
       .proof-sep { display: none; }
@@ -1010,6 +1031,10 @@
           <span style="color:#ff6700;letter-spacing:1px;">★★★★★</span>
           <span>CDMX · Edo. de México</span>
         </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <img src="img/hero-aviones.png" alt="The Office Generation lidera el abastecimiento B2B" />
       </div>
     </div>
   </section>
@@ -1202,26 +1227,31 @@
           </div>
         </div>
 
-        <div class="why-metrics reveal rd-2">
-          <div class="why-metric">
-            <span class="why-m-label">Años de trayectoria</span>
-            <span class="why-m-val">8+</span>
+        <div class="why-right reveal rd-2">
+          <div class="why-right-img">
+            <img src="img/handshake-confianza.png" alt="Alianza B2B de confianza — The Office Generation" />
           </div>
-          <div class="why-metric">
-            <span class="why-m-label">Tiempo máx. de respuesta</span>
-            <span class="why-m-val">24h</span>
-          </div>
-          <div class="why-metric">
-            <span class="why-m-label">Productos en catálogo</span>
-            <span class="why-m-val">+1,000</span>
-          </div>
-          <div class="why-metric">
-            <span class="why-m-label">Categorías de servicio</span>
-            <span class="why-m-val">12</span>
-          </div>
-          <div class="why-metric">
-            <span class="why-m-label">Cobertura directa</span>
-            <span class="why-m-val">CDMX · EdoMex</span>
+          <div class="why-metrics" style="border-radius: 0 0 var(--r-xl) var(--r-xl);">
+            <div class="why-metric">
+              <span class="why-m-label">Años de trayectoria</span>
+              <span class="why-m-val">8+</span>
+            </div>
+            <div class="why-metric">
+              <span class="why-m-label">Tiempo máx. de respuesta</span>
+              <span class="why-m-val">24h</span>
+            </div>
+            <div class="why-metric">
+              <span class="why-m-label">Productos en catálogo</span>
+              <span class="why-m-val">+1,000</span>
+            </div>
+            <div class="why-metric">
+              <span class="why-m-label">Categorías de servicio</span>
+              <span class="why-m-val">12</span>
+            </div>
+            <div class="why-metric">
+              <span class="why-m-label">Cobertura directa</span>
+              <span class="why-m-val">CDMX · EdoMex</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1385,7 +1415,7 @@
           <div class="f-socials">
             <a href="#" class="f-soc" aria-label="LinkedIn"><i data-lucide="linkedin" style="width:14px;height:14px;"></i></a>
             <a href="#" class="f-soc" aria-label="Twitter"><i data-lucide="twitter" style="width:14px;height:14px;"></i></a>
-            <a href="https://wa.me/521234567890" class="f-soc" aria-label="WhatsApp"><i data-lucide="message-circle" style="width:14px;height:14px;"></i></a>
+            <a href="https://wa.me/5215581011111" class="f-soc" aria-label="WhatsApp"><i data-lucide="message-circle" style="width:14px;height:14px;"></i></a>
           </div>
         </div>
 
@@ -1418,15 +1448,15 @@
           <p class="f-col-title">Contacto</p>
           <div class="f-contact-item">
             <i data-lucide="map-pin" style="width:13px;height:13px;color:#ff6700;flex-shrink:0;margin-top:2px;"></i>
-            <span>Av. Insurgentes Sur 1234, CDMX</span>
+            <span>CDMX y Estado de México</span>
           </div>
           <div class="f-contact-item">
             <i data-lucide="mail" style="width:13px;height:13px;color:#ff6700;flex-shrink:0;"></i>
-            <a href="mailto:contacto@theofficegeneration.mx" style="transition:color 0.2s;" onmouseover="this.style.color='#ff6700'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">contacto@theofficegeneration.mx</a>
+            <a href="mailto:contacto@theofficegeneration.com" style="transition:color 0.2s;" onmouseover="this.style.color='#ff6700'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">contacto@theofficegeneration.com</a>
           </div>
           <div class="f-contact-item">
             <i data-lucide="phone" style="width:13px;height:13px;color:#ff6700;flex-shrink:0;"></i>
-            <a href="tel:+525512345678" style="transition:color 0.2s;" onmouseover="this.style.color='#ff6700'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">+52 (55) 1234-5678</a>
+            <a href="tel:+5215581011111" style="transition:color 0.2s;" onmouseover="this.style.color='#ff6700'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">+52 1 55 8101 1111</a>
           </div>
           <a href="contacto.html" class="btn-o" style="border-radius:8px;font-size:13px;padding:9px 18px;margin-top:6px;display:inline-flex;">
             Escríbenos

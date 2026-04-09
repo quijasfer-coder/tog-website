@@ -137,7 +137,8 @@
     }
     .svc-opt.on .svc-opt-icon { background: rgba(255,103,0,0.18); }
     .svc-opt-name { font-family: var(--font-h); font-size: 13.5px; font-weight: 700; color: var(--white); margin-bottom: 3px; }
-    .svc-opt-desc { font-size: 11.5px; color: var(--gray-lt); line-height: 1.5; }
+    .svc-opt-desc { font-size: 11.5px; color: var(--gray-lt); line-height: 1.5; margin-bottom: 5px; }
+    .svc-opt-brands { font-size: 10px; color: var(--orange); opacity: 0.7; letter-spacing: 0.03em; font-weight: 500; }
     .svc-check-icon {
       position: absolute; top: 12px; right: 12px;
       width: 18px; height: 18px; border-radius: 50%;
@@ -307,7 +308,7 @@
         Herramienta gratuita
       </div>
       <h1>¿Cuánto gasta tu empresa<br/>en insumos de oficina <span>al mes?</span></h1>
-      <p>Selecciona los servicios que usas, el tamaño de tu empresa y tu giro. Obtén un estimado en segundos.</p>
+      <p>Selecciona las categorías de insumos que tu empresa consume, indica el número de colaboradores y el giro de tu negocio. En segundos obtienes un estimado mensual basado en precios reales de mercado — sin registro, sin compromiso.</p>
     </div>
   </section>
 
@@ -325,46 +326,52 @@
             <div class="step-title">¿Qué insumos necesita tu oficina?</div>
             <div class="svc-grid">
 
-              <div class="svc-opt" data-svc="papeleria" data-base="120" onclick="toggleSvc(this)">
+              <div class="svc-opt" data-svc="papeleria" data-base="165" onclick="toggleSvc(this)">
                 <div class="svc-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
                 <div class="svc-opt-icon"><i data-lucide="file-text" style="width:15px;height:15px;"></i></div>
                 <div class="svc-opt-name">Papelería</div>
                 <div class="svc-opt-desc">Bolígrafos, folders, cuadernos, archivadores</div>
+                <div class="svc-opt-brands">Bic · Pilot · Mead · Avery</div>
               </div>
 
-              <div class="svc-opt" data-svc="limpieza" data-base="130" onclick="toggleSvc(this)">
+              <div class="svc-opt" data-svc="limpieza" data-base="155" onclick="toggleSvc(this)">
                 <div class="svc-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
                 <div class="svc-opt-icon"><i data-lucide="droplets" style="width:15px;height:15px;"></i></div>
                 <div class="svc-opt-name">Limpieza e Higiene</div>
                 <div class="svc-opt-desc">Papel higiénico, toallas, desinfectantes, jabón</div>
+                <div class="svc-opt-brands">Kleenex · Fabuloso · Softsoap · Mr. Músculo</div>
               </div>
 
-              <div class="svc-opt" data-svc="papel" data-base="85" onclick="toggleSvc(this)">
+              <div class="svc-opt" data-svc="papel" data-base="160" onclick="toggleSvc(this)">
                 <div class="svc-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
                 <div class="svc-opt-icon"><i data-lucide="layers" style="width:15px;height:15px;"></i></div>
                 <div class="svc-opt-name">Papel Bond</div>
                 <div class="svc-opt-desc">T/Carta, T/Oficio, resmas y cajas por volumen</div>
+                <div class="svc-opt-brands">Navigator · Double A · HP Paper</div>
               </div>
 
-              <div class="svc-opt" data-svc="impresion" data-base="95" onclick="toggleSvc(this)">
+              <div class="svc-opt" data-svc="impresion" data-base="170" onclick="toggleSvc(this)">
                 <div class="svc-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
                 <div class="svc-opt-icon"><i data-lucide="printer" style="width:15px;height:15px;"></i></div>
                 <div class="svc-opt-name">Consumibles de Impresión</div>
                 <div class="svc-opt-desc">Tóners, cartuchos, cintas para todas las marcas</div>
+                <div class="svc-opt-brands">HP · Canon · Epson · Brother</div>
               </div>
 
-              <div class="svc-opt" data-svc="tecnologia" data-base="160" onclick="toggleSvc(this)">
+              <div class="svc-opt" data-svc="tecnologia" data-base="130" onclick="toggleSvc(this)">
                 <div class="svc-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
                 <div class="svc-opt-icon"><i data-lucide="monitor" style="width:15px;height:15px;"></i></div>
                 <div class="svc-opt-name">Tecnología</div>
                 <div class="svc-opt-desc">Periféricos, accesorios de cómputo, equipo IT</div>
+                <div class="svc-opt-brands">Logitech · Kingston · Belkin · Dell</div>
               </div>
 
-              <div class="svc-opt" data-svc="mobiliario" data-base="200" onclick="toggleSvc(this)">
+              <div class="svc-opt" data-svc="mobiliario" data-base="210" onclick="toggleSvc(this)">
                 <div class="svc-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
                 <div class="svc-opt-icon"><i data-lucide="armchair" style="width:15px;height:15px;"></i></div>
                 <div class="svc-opt-name">Mobiliario</div>
                 <div class="svc-opt-desc">Escritorios, sillas ergonómicas, mesas</div>
+                <div class="svc-opt-brands">Truper · Ofifácil · Silla Pro · WorkSpace</div>
               </div>
 
             </div>
@@ -455,7 +462,7 @@
             </button>
 
             <div class="disclaimer">
-              <strong>⚠️ Estimado orientativo.</strong> Estos precios son aproximados y se basan en marcas genéricas y consumo promedio. Los costos reales varían según marca, volumen y frecuencia. <strong>Para una cotización precisa, contacta a nuestro equipo de ventas.</strong>
+              ℹ️ <strong>Estimado de referencia.</strong> Estos números se basan en precios públicos de marcas comerciales (Kleenex, HP, Navigator, Logitech, entre otras) y pueden variar según el mix exacto de productos, marcas preferidas y condiciones de entrega de tu empresa. Para un precio ajustado a tu operación, solicita cotización con nuestro equipo.
             </div>
           </div>
 
@@ -470,7 +477,10 @@
     <p>© 2026 <strong>The Office Generation by CAAVI®</strong> · CDMX y Estado de México &nbsp;·&nbsp;
       <a href="index.html">Inicio</a> &nbsp;·&nbsp;
       <a href="servicios.html">Servicios</a> &nbsp;·&nbsp;
-      <a href="contacto.html">Contacto</a>
+      <a href="nosotros.html">Nosotros</a> &nbsp;·&nbsp;
+      <a href="contacto.html">Contacto</a> &nbsp;·&nbsp;
+      <a href="mailto:contacto@theofficegeneration.com">contacto@theofficegeneration.com</a> &nbsp;·&nbsp;
+      <a href="tel:+5215581011111">+52 1 55 8101 1111</a>
     </p>
   </footer>
 
@@ -552,13 +562,13 @@
         rows.push({ name, subtotal });
       });
 
-      const low  = total * 0.85;
-      const high = total * 1.20;
+      const low  = total * 1.00;
+      const high = total * 1.30;
 
       // Show result
       document.getElementById('emptyState').style.display  = 'none';
       document.getElementById('resultState').style.display = 'block';
-      document.getElementById('resultMin').textContent      = fmt(total);
+      document.getElementById('resultMin').textContent      = fmt(low);
       document.getElementById('resultRange').textContent    = `${fmt(low)} – ${fmt(high)} / mes`;
 
       // Breakdown

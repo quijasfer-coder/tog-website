@@ -106,10 +106,22 @@
         /* Hero Section */
         .hero-nosotros {
             background-color: var(--color-dark);
+            background-image: url('img/mujer-multitud.png');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
             color: white;
             padding: 5rem 2rem;
             text-align: center;
+            position: relative;
         }
+        .hero-nosotros::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom, rgba(7,7,7,0.78) 0%, rgba(7,7,7,0.65) 50%, rgba(7,7,7,0.85) 100%);
+            pointer-events: none;
+        }
+        .hero-nosotros > * { position: relative; z-index: 1; }
 
         .badge {
             display: inline-block;
@@ -593,6 +605,18 @@
         </div>
     </section>
 
+    <!-- VISUAL STRIP 1 -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; min-height:320px; overflow:hidden;">
+      <div style="position:relative; overflow:hidden;">
+        <img src="img/lapiz-naranja.png" alt="Destacando entre la competencia" style="width:100%; height:100%; object-fit:cover; object-position:center;" />
+      </div>
+      <div style="background:#070707; display:flex; flex-direction:column; justify-content:center; padding:52px 48px; border-left:1px solid rgba(255,255,255,0.07);">
+        <p style="font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#ff6700; margin-bottom:14px;">Por qué somos diferentes</p>
+        <h3 style="font-family:'Outfit',sans-serif; font-size:clamp(1.4rem,2.5vw,2rem); font-weight:800; color:#fff; line-height:1.25; margin-bottom:16px;">Mientras otros son uno más,<br/>nosotros somos <span style="color:#ff6700;">el que sí responde.</span></h3>
+        <p style="color:#727272; font-size:14px; line-height:1.7;">8 años construyendo relaciones reales con empresas reales. No somos un catálogo en línea — somos el proveedor que conoce tu operación.</p>
+      </div>
+    </div>
+
     <!-- MISIÓN / VISIÓN / VALORES -->
     <section class="section-light-bg" style="padding: 5rem 2rem;">
         <div style="max-width: 1200px; margin: 0 auto;">
@@ -697,6 +721,18 @@
             </div>
         </div>
     </section>
+
+    <!-- VISUAL STRIP 2 -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; min-height:320px; overflow:hidden;">
+      <div style="background:#0d0d0d; display:flex; flex-direction:column; justify-content:center; padding:52px 48px; border-right:1px solid rgba(255,255,255,0.07);">
+        <p style="font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#ff6700; margin-bottom:14px;">Nuestra prioridad</p>
+        <h3 style="font-family:'Outfit',sans-serif; font-size:clamp(1.4rem,2.5vw,2rem); font-weight:800; color:#fff; line-height:1.25; margin-bottom:16px;">Tu operación no puede esperar.<br/><span style="color:#ff6700;">La nuestra tampoco.</span></h3>
+        <p style="color:#727272; font-size:14px; line-height:1.7;">Cada cliente es una empresa que confía en nosotros para que su día funcione. Por eso respondemos rápido, entregamos a tiempo y resolvemos antes de que pidas.</p>
+      </div>
+      <div style="position:relative; overflow:hidden;">
+        <img src="img/satisfaccion.png" alt="Satisfacción del cliente" style="width:100%; height:100%; object-fit:cover; object-position:center;" />
+      </div>
+    </div>
 
     <!-- TEAM SECTION -->
     <section class="team-section">
@@ -808,23 +844,24 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-column">
-                <h4>Sobre The Office Generation</h4>
-                <p>Transformamos espacios de trabajo en ambientes de productividad y innovación para empresas mexicanas.</p>
+                <h4>The Office Generation by CAAVI®</h4>
+                <p>Comercializadora estratégica B2B. Tu socio de confianza para equipar, abastecer y escalar en CDMX y Estado de México.</p>
             </div>
 
             <div class="footer-column">
-                <h4>Enlaces Rápidos</h4>
-                <a href="../index.html">Inicio</a>
-                <a href="./nosotros.html">Nosotros</a>
-                <a href="./productos.html">Productos</a>
-                <a href="./contacto.html">Contacto</a>
+                <h4>Navegar</h4>
+                <a href="index.html">Inicio</a>
+                <a href="servicios.html">Servicios</a>
+                <a href="calculadora.html">Calculadora</a>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="contacto.html">Contacto</a>
             </div>
 
             <div class="footer-column">
                 <h4>Contacto</h4>
-                <p>Email: info@caavi.mx</p>
-                <p>Teléfono: +52 (55) 1234-5678</p>
-                <p>CDMX, México</p>
+                <p><a href="mailto:contacto@theofficegeneration.com" style="color:inherit;">contacto@theofficegeneration.com</a></p>
+                <p><a href="tel:+5215581011111" style="color:inherit;">+52 1 55 8101 1111</a></p>
+                <p>CDMX y Estado de México</p>
             </div>
 
             <div class="footer-column">
@@ -832,12 +869,11 @@
                 <a href="#">LinkedIn</a>
                 <a href="#">Facebook</a>
                 <a href="#">Instagram</a>
-                <a href="#">Twitter</a>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2024 The Office Generation by CAAVI®. Todos los derechos reservados.</p>
+            <p>&copy; 2026 The Office Generation by CAAVI®. Todos los derechos reservados.</p>
         </div>
     </footer>
 
