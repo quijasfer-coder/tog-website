@@ -35,7 +35,7 @@
     "name": "The Office Generation by CAAVI®",
     "description": "Comercializadora estratégica B2B especializada en el abastecimiento recurrente de insumos para empresas en CDMX y Estado de México. Papelería, limpieza, tecnología, mobiliario y más.",
     "url": "https://www.theofficegeneration.com",
-    "telephone": "+5215581011111",
+    "telephone": "+5215620202021",
     "email": "contacto@theofficegeneration.com",
     "address": {
       "@type": "PostalAddress",
@@ -256,6 +256,54 @@
       pointer-events: none;
       z-index: 0;
     }
+    /* Desktop: muestra desktop, oculta móvil */
+    .hero-video-mobile  { display: none; }
+    .hero-video-desktop { display: block; }
+
+    /* Mobile: muestra móvil, oculta desktop */
+    @media (max-width: 768px) {
+      .hero-video-desktop { display: none; }
+      .hero-video-mobile  { display: block; }
+
+      .hero {
+        justify-content: flex-end;
+        padding-bottom: 64px;
+        min-height: 100svh;
+      }
+
+      .hero-badge-top {
+        top: calc(var(--nav-h) + 20px);
+      }
+
+      .hero-content {
+        width: 100%;
+        padding: 0 16px;
+      }
+
+      .hero-headline {
+        font-size: clamp(20px, 5.5vw, 32px);
+        margin-bottom: 12px;
+      }
+
+      .hero-sub {
+        font-size: 13px;
+        margin-bottom: 24px;
+      }
+
+      .hero-ctas {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .hero-ctas a {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+      }
+
+      .hero-proof { display: none; }
+    }
 
     /* Dark overlay — completamente libre arriba, oscuro solo al fondo */
     .hero-overlay {
@@ -279,6 +327,7 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 3;
+      white-space: nowrap;
     }
 
     /* Pill badge */
@@ -1024,9 +1073,14 @@
   <!-- ══════════════════════════ HERO ══════ -->
   <section class="hero">
 
-    <!-- Video de fondo en loop -->
-    <video class="hero-video" autoplay muted loop playsinline preload="auto">
+    <!-- Video desktop -->
+    <video class="hero-video hero-video-desktop" autoplay muted loop playsinline preload="auto">
       <source src="img/0416-v2.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Video móvil (16:9, vertical) -->
+    <video class="hero-video hero-video-mobile" autoplay muted loop playsinline preload="auto">
+      <source src="img/hero-movil.mp4" type="video/mp4" />
     </video>
 
     <!-- Overlay oscuro para legibilidad del texto -->
@@ -1451,9 +1505,9 @@
 
           <p class="footer-tag">Comercializadora estratégica B2B. Tu socio de confianza para equipar, abastecer y escalar.</p>
           <div class="f-socials">
-            <a href="https://www.instagram.com/officegeneration?igsh=cTFsYTV6dTByamRj&utm_source=qr" class="f-soc" aria-label="Instagram" target="_blank"><i data-lucide="instagram" style="width:14px;height:14px;"></i></a>
-            <a href="https://www.linkedin.com/in/laura-avila-acosta-7039883bb/" class="f-soc" aria-label="LinkedIn" target="_blank"><i data-lucide="linkedin" style="width:14px;height:14px;"></i></a>
-            <a href="https://wa.me/5215581011111?text=Quiero%20m%C3%A1s%20informaci%C3%B3n" class="f-soc" aria-label="WhatsApp" target="_blank"><i data-lucide="message-circle" style="width:14px;height:14px;"></i></a>
+            <a href="https://www.instagram.com/officegeneration?igsh=cTFsYTV6dTByamRj&utm_source=qr" class="f-soc" aria-label="Instagram" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+            <a href="https://www.linkedin.com/in/laura-avila-acosta-7039883bb/" class="f-soc" aria-label="LinkedIn" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+            <a href="https://wa.me/5215620202021?text=Quiero%20m%C3%A1s%20informaci%C3%B3n" class="f-soc" aria-label="WhatsApp" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></a>
           </div>
         </div>
 
@@ -1485,16 +1539,16 @@
         <div>
           <p class="f-col-title">Contacto</p>
           <div class="f-contact-item">
-            <i data-lucide="map-pin" style="width:13px;height:13px;color:#ff6700;flex-shrink:0;margin-top:2px;"></i>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
             <span>CDMX y Estado de México</span>
           </div>
           <div class="f-contact-item">
-            <i data-lucide="mail" style="width:13px;height:13px;color:#ff6700;flex-shrink:0;"></i>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
             <a href="mailto:contacto@theofficegeneration.com" style="transition:color 0.2s;" onmouseover="this.style.color='#ff6700'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">contacto@theofficegeneration.com</a>
           </div>
           <div class="f-contact-item">
-            <i data-lucide="phone" style="width:13px;height:13px;color:#ff6700;flex-shrink:0;"></i>
-            <a href="tel:+5215581011111" style="transition:color 0.2s;" onmouseover="this.style.color='#ff6700'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">+52 1 55 8101 1111</a>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <a href="tel:+5215620202021" style="transition:color 0.2s;" onmouseover="this.style.color='#ff6700'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">+52 1 56 2020 2021</a>
           </div>
           <a href="contacto.html" class="btn-o" style="border-radius:8px;font-size:13px;padding:9px 18px;margin-top:6px;display:inline-flex;">
             Escríbenos
