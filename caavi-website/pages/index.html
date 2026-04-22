@@ -6,7 +6,7 @@
 
   <!-- SEO Primary -->
   <title>Proveedor de Insumos para Empresas en CDMX | The Office Generation by CAAVI®</title>
-  <meta name="description" content="Abastecemos empresas en CDMX y Estado de México con papelería, limpieza, tecnología y mobiliario de oficina. Más de 8 años de experiencia. Cotización gratuita sin compromiso." />
+  <meta name="description" content="Abastecemos empresas en CDMX y Estado de México con papelería, limpieza, tecnología y mobiliario de oficina. Más de 15 años de experiencia. Cotización gratuita sin compromiso." />
   <meta name="keywords" content="proveedor insumos oficina CDMX, papelería corporativa México, insumos empresas CDMX, proveedor B2B oficina, abastecimiento corporativo, insumos Estado de México, comercializadora oficina" />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="The Office Generation by CAAVI®" />
@@ -16,7 +16,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.theofficegeneration.com/" />
   <meta property="og:title" content="Proveedor de Insumos para Empresas en CDMX | The Office Generation by CAAVI®" />
-  <meta property="og:description" content="Abastecemos empresas en CDMX y Estado de México con papelería, limpieza, tecnología y mobiliario de oficina. Más de 8 años de experiencia." />
+  <meta property="og:description" content="Abastecemos empresas en CDMX y Estado de México con papelería, limpieza, tecnología y mobiliario de oficina. Más de 15 años de experiencia." />
   <meta property="og:image" content="https://i.imgur.com/mxwkuNU.png" />
   <meta property="og:locale" content="es_MX" />
   <meta property="og:site_name" content="The Office Generation by CAAVI®" />
@@ -1118,7 +1118,7 @@
       </div>
 
       <div class="hero-proof">
-        <div class="proof-item"><strong>8+</strong><span>Años de experiencia</span></div>
+        <div class="proof-item"><strong>+15</strong><span>Años de experiencia</span></div>
         <div class="proof-sep"></div>
         <div class="proof-item"><strong>+1,000</strong><span>Productos entregados</span></div>
         <div class="proof-sep"></div>
@@ -1166,7 +1166,7 @@
   <!-- ══════════════════════════ STATS ══════ -->
   <div class="stats-wrap">
     <div class="stats-grid">
-      <div class="stat-cell reveal"><div class="stat-n">8+</div><div class="stat-l">Años de experiencia</div></div>
+      <div class="stat-cell reveal"><div class="stat-n">+15</div><div class="stat-l">Años de experiencia</div></div>
       <div class="stat-cell reveal rd-1"><div class="stat-n">+1,000</div><div class="stat-l">Productos entregados</div></div>
       <div class="stat-cell reveal rd-2"><div class="stat-n">12</div><div class="stat-l">Categorías de servicio</div></div>
       <div class="stat-cell reveal rd-3"><div class="stat-n">2</div><div class="stat-l">Estados de cobertura directa</div></div>
@@ -1286,7 +1286,7 @@
         <div class="reveal">
           <div class="s-label">Por Qué Elegirnos</div>
           <h2 class="s-title">Tu socio más confiable<br/>para las necesidades<br/>de tu espacio de trabajo.</h2>
-          <p class="s-sub">Afrontando con responsabilidad los retos de la oficina moderna — con 8 años de experiencia y un catálogo de +1,000 productos.</p>
+          <p class="s-sub">Afrontando con responsabilidad los retos de la oficina moderna — con más de 15 años de experiencia y un catálogo de +1,000 productos.</p>
           <div class="why-points">
             <div class="why-pt">
               <span class="why-no">01</span>
@@ -1326,7 +1326,7 @@
           <div class="why-metrics" style="border-radius: 0 0 var(--r-xl) var(--r-xl);">
             <div class="why-metric">
               <span class="why-m-label">Años de trayectoria</span>
-              <span class="why-m-val">8+</span>
+              <span class="why-m-val">+15</span>
             </div>
             <div class="why-metric">
               <span class="why-m-label">Tiempo máx. de respuesta</span>
@@ -1599,6 +1599,50 @@
         spans.forEach(s => s.style.cssText = '');
       })
     );
+
+    // ── Video autoplay fix (cross-browser) ──────────────────────────
+    // Algunos navegadores bloquean autoplay incluso con `muted`.
+    // Si falla, intentamos reproducir al primer tap/click en el hero.
+    document.querySelectorAll('.hero-video').forEach(function(vid) {
+      // Forzar atributos necesarios por seguridad
+      vid.muted = true;
+      vid.setAttribute('playsinline', '');
+      vid.setAttribute('webkit-playsinline', '');
+
+      var p = vid.play();
+      if (p !== undefined) {
+        p.catch(function() {
+          // Autoplay bloqueado — mostrar indicador y reproducir al tap
+          var hero = document.querySelector('.hero');
+          if (!hero) return;
+          // Crear botón overlay sutil
+          var btn = document.createElement('button');
+          btn.id = 'vid-play-btn';
+          btn.style.cssText = [
+            'position:absolute','bottom:50%','left:50%',
+            'transform:translate(-50%,50%)',
+            'z-index:10','background:rgba(255,103,0,0.85)',
+            'border:none','border-radius:50%',
+            'width:64px','height:64px','cursor:pointer',
+            'display:flex','align-items:center','justify-content:center',
+            'transition:opacity 0.4s ease'
+          ].join(';');
+          btn.innerHTML = '<svg width="26" height="26" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
+          hero.appendChild(btn);
+
+          function startVideo() {
+            vid.play().then(function() {
+              btn.style.opacity = '0';
+              setTimeout(function(){ btn.remove(); }, 400);
+            }).catch(function(){});
+            document.removeEventListener('touchstart', startVideo);
+          }
+
+          btn.addEventListener('click', startVideo);
+          document.addEventListener('touchstart', startVideo, { once: true });
+        });
+      }
+    });
 
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
